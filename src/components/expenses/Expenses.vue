@@ -1,11 +1,17 @@
 <template>
     <div>
+        <v-card>
+            <v-container>
+                <ExpenseRegister></ExpenseRegister>
+            </v-container>
+        </v-card>
         <v-container>
-            <ExpenseForm></ExpenseForm>
-        </v-container>
-        <v-container>
-            <v-layout row wrap>
-                <Expense v-for="expense in expenses" :key="expense.id" 
+            <v-layout 
+                row 
+                wrap>
+                <Expense 
+                    v-for="expense in expenses" 
+                    :key="expense.id" 
                     :expense="expense">
                 </Expense>
             </v-layout>
@@ -15,16 +21,16 @@
 
 <script>
 import Expense from './Expense'
-import ExpenseForm from './ExpenseForm.vue'
+import ExpenseRegister from './ExpenseRegister.vue'
 import {mapGetters} from 'vuex'
 
 export default {
     components:{ 
         Expense,
-        ExpenseForm
+        ExpenseRegister
     },
     methods:{
-        ...mapGetters('expenses', ['getExpenses'])
+        ...mapGetters('expenses',['getExpenses'])
     },
     computed:{
         expenses(){

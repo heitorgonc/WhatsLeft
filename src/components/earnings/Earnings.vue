@@ -1,12 +1,18 @@
 <template>
     <div>
+        <v-card>
+            <v-container>
+                <EarningsRegister></EarningsRegister>
+            </v-container>
+        </v-card>
         <v-container>
-            <EarningsRegister></EarningsRegister>
-        </v-container>
-        <v-container>
-            <v-layout row wrap>
-                <Earning v-for="earning in earnings" :key="earning.id"
-                    :earnings="earnings">
+            <v-layout 
+                row 
+                wrap>
+                <Earning 
+                    v-for="earning in earnings" 
+                    :key="earning.id"
+                    :earning="earning">
                 </Earning>
             </v-layout>
         </v-container>
@@ -24,13 +30,11 @@ export default {
         EarningsRegister
     },
     methods:{
-        ...mapGetters('earnings', ['getEarnings'])
+        ...mapGetters('earnings',['getEarnings'])
     },
     computed:{
-        earnings:{
-            get(){
-                return this.getEarnings()
-            }
+        earnings(){
+            return this.getEarnings()
         }
     }
 }

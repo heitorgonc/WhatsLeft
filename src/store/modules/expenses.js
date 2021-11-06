@@ -4,7 +4,7 @@ export default {
     namespaced: true,
     state: {
         expenses: [],
-        id: 0
+        Id: 0
     },
     mutations:{
         setExpenses(state, expenses){

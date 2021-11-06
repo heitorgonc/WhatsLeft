@@ -1,18 +1,18 @@
 <template>
     <v-form ref="form">
-            <v-text-field 
-            v-model="description"
-            :rules="descriptionRules"
+        <v-text-field 
+            v-model="description" 
             :counter="15"
+            :rules="descriptionRules"
             label="Description"
             required>
         </v-text-field>
         <v-text-field 
             type="number" 
-            v-model="value"
+            v-model="price"
             :counter="10"
-            :rules="valueRules"
-            label="Value"
+            :rules="priceRules"
+            label="Price"
             required>
         </v-text-field>
         <v-btn 
@@ -20,9 +20,9 @@
             rounded 
             text
             class="mt-5 ml-5 mb-5" 
-            @click="createEarning"
-            :disabled="value <= 0 || description == '' ">
-            Create Earning
+            @click="createExpense"
+            :disabled="price <= 0 || description == '' ">
+            Create Expense
         </v-btn>
     </v-form>
 </template>
@@ -35,45 +35,45 @@ export default {
     data(){
         return{
             description: '',
-            value: '',
+            price: '',
             descriptionRules:[
                 v => !!v || 'Description is required',
                 v => v.length <= 15 || 'Description must be less than 15 characters',
             ],
-            valueRules:[
-                v => !!v || 'Value is required',
-                v => v.length <= 10 || 'Value must be less than 10 characters',
-                v => v > 0 || 'The value can be neither zero nor negative',
+            priceRules:[
+                v => !!v || 'Price is required',
+                v => v.length <= 10 || 'Price must be less than 10 characters',
+                v => v > 0 || 'The price can be neither zero nor negative',
             ]
         }
     },
     methods:{
-        ...mapActions('earnings', ['addEarning']),
-        ...mapMutations('earnings', ['setId']),
-        createEarning(){
-            const earning = {
+        ...mapActions('expenses', ['addExpense']),
+        ...mapMutations('expenses', ['setId']),
+        createExpense(){
+            const expense = {
                 id: this.id++,
                 description: this.description,
-                value: this.value
+                price: this.price
             }
-            this.addEarning(earning)
+            this.addExpense(expense)
             this.clear()
         },
         clear(){
             this.description = ''
-            this.value = ''
+            this.price = ''
             this.$refs.form.resetValidation()
         }
     },
     computed:{
         id:{
             get(){
-                return this.$store.state.earnings.id
+                return this.$store.state.expenses.id
             },
             set(id){
                 this.setId(id)
             }
-        },
+        }
     }
 }
 </script>

@@ -5,7 +5,8 @@
             :counter="15"
             :rules="descriptionRules"
             label="Description"
-            required>
+            required
+        >
         </v-text-field>
         <v-text-field 
             type="number" 
@@ -13,16 +14,17 @@
             :counter="10"
             :rules="priceRules"
             label="Price"
-            required>
+            required
+        >
         </v-text-field>
         <v-btn 
             outlined 
             rounded 
             text
             class="mt-5 ml-5 mb-5" 
-            @click="createExpense"
-            :disabled="price <= 0 || description == '' ">
-            Create Expense
+            @click="addExpense"
+            :disabled="price <= 0 || description == '' "
+        >Create Expense
         </v-btn>
     </v-form>
 </template>
@@ -48,15 +50,15 @@ export default {
         }
     },
     methods:{
-        ...mapActions('expenses', ['addExpense']),
+        ...mapActions('expenses', {addExpenseAction: 'addExpense'}),
         ...mapMutations('expenses', ['setId']),
-        createExpense(){
+        addExpense(){
             const expense = {
                 id: this.id++,
                 description: this.description,
                 price: this.price
             }
-            this.addExpense(expense)
+            this.addExpenseAction(expense)
             this.clear()
         },
         clear(){

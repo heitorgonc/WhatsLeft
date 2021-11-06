@@ -8,11 +8,13 @@
         <v-container>
             <v-layout 
                 row 
-                wrap>
+                wrap
+            >
                 <Expense 
                     v-for="expense in expenses" 
                     :key="expense.id" 
-                    :expense="expense">
+                    :expense="expense"
+                >
                 </Expense>
             </v-layout>
         </v-container>

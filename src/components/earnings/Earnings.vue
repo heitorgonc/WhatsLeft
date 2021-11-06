@@ -12,7 +12,8 @@
                 <Earning 
                     v-for="earning in earnings" 
                     :key="earning.id"
-                    :earning="earning">
+                    :earning="earning"
+                >
                 </Earning>
             </v-layout>
         </v-container>

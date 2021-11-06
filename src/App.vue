@@ -2,7 +2,7 @@
   <v-app>
     <Header></Header>
     <v-main>
-      <router-view  name="way"></router-view>
+      <router-view name="way"></router-view>
       <v-container>
         <router-view></router-view>
       </v-container>

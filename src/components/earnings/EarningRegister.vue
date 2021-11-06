@@ -1,11 +1,12 @@
 <template>
     <v-form ref="form">
-            <v-text-field 
+        <v-text-field 
             v-model="description"
             :rules="descriptionRules"
             :counter="15"
             label="Description"
-            required>
+            required
+        >
         </v-text-field>
         <v-text-field 
             type="number" 
@@ -13,16 +14,17 @@
             :counter="10"
             :rules="valueRules"
             label="Value"
-            required>
+            required
+        >
         </v-text-field>
         <v-btn 
             outlined 
             rounded 
             text
             class="mt-5 ml-5 mb-5" 
-            @click="createEarning"
-            :disabled="value <= 0 || description == '' ">
-            Create Earning
+            @click="addEarning"
+            :disabled="value <= 0 || description == ''"
+        >Create Earning
         </v-btn>
     </v-form>
 </template>
@@ -48,15 +50,15 @@ export default {
         }
     },
     methods:{
-        ...mapActions('earnings', ['addEarning']),
+        ...mapActions('earnings', {addEarningAction: 'addEarning'}),
         ...mapMutations('earnings', ['setId']),
-        createEarning(){
+        addEarning(){
             const earning = {
                 id: this.id++,
                 description: this.description,
                 value: this.value
             }
-            this.addEarning(earning)
+            this.addEarningAction(earning)
             this.clear()
         },
         clear(){

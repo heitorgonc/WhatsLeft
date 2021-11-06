@@ -2,33 +2,44 @@
     <v-flex class="pr-5 pt-5" xs12 md6 lg4>
         <v-card class="red darken-3 white--text">
             <v-card-title class="headline">
-                <strong>{{expense.description}} <small>(Price: {{expense.price}})</small></strong>
+                <strong>
+                    {{expense.description}} 
+                    <small>
+                        (Price: {{expense.price}})
+                    </small>
+                </strong>
             </v-card-title>
         </v-card>
         <v-card>
             <v-container 
                 fill 
-                height>
+                height
+            >
                 <v-text-field 
                     label="Date" 
                     type="date" 
-                    v-model="date">
+                    v-model="date"
+                >
                 </v-text-field>
                 <v-text-field 
                     label="Quantity" 
                     type="number" 
-                    v-model.number="quantity">
+                    v-model.number="quantity"
+                >
                 </v-text-field>
                 <v-btn 
                     class="green darken-3 white--text"
                     :disabled="quantity <= 0 || !Number.isInteger(quantity)"
-                    @click="confirmExpense">Confirm
+                    @click="confirmExpense"
+                >Confirm
                 </v-btn>
             </v-container>
         </v-card>
     </v-flex>
 </template>
 <script>
+import {mapActions} from 'vuex'
+
 export default {
     props: ['expense'],
     data() {
@@ -38,6 +49,7 @@ export default {
         }
     },
     methods:{
+        ...mapActions('expenses', {confirmExpenseAction: 'confirmExpense'}),
         confirmExpense() {
             const expense = {
                 expenseId: this.expense.id,
@@ -45,7 +57,7 @@ export default {
                 date: this.date,
                 quantity: this.quantity
             }
-            console.log(expense)
+            this.confirmExpenseAction(expense)
             this.quantity = 0
         }
     }

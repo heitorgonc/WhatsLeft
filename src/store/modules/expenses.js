@@ -18,8 +18,8 @@ export default {
         }
     },
     actions:{
-        confirmExpense({commit}){
-            commit()
+        confirmExpense({commit}, expense){
+            commit('confirmExpense', expense)
         },
         addExpense(context, expense){
             context.commit('addExpense', expense)

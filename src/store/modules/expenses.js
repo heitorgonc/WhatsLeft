@@ -27,10 +27,5 @@ export default {
         initExpenses({commit}){
             commit('setExpenses', expenses)
         }
-    },
-    getters:{
-        getExpenses(state){
-            return state.expenses
-        }
     }
 }

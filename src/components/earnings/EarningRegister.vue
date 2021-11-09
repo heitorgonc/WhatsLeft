@@ -17,14 +17,22 @@
             required
         >
         </v-text-field>
-        <v-btn 
+        <v-btn
             outlined 
             rounded 
             text
             class="mt-5 ml-5 mb-5" 
             @click="addEarning"
             :disabled="value <= 0 || description == ''"
-        >Create Earning
+        >Save
+        </v-btn>
+        <v-btn
+            outlined 
+            rounded 
+            text
+            class="mt-5 ml-5 mb-5" 
+            @click="changeScreen = true"
+        >Cancel
         </v-btn>
     </v-form>
 </template>
@@ -52,6 +60,7 @@ export default {
     methods:{
         ...mapActions('earnings', {addEarningAction: 'addEarning'}),
         ...mapMutations('earnings', ['setId']),
+        ...mapMutations(['setChangeScreen']),
         addEarning(){
             const earning = {
                 id: this.id++,
@@ -60,6 +69,7 @@ export default {
             }
             this.addEarningAction(earning)
             this.clear()
+            this.changeScreen = true
         },
         clear(){
             this.description = ''
@@ -76,6 +86,14 @@ export default {
                 this.setId(id)
             }
         },
+        changeScreen:{
+            get(){
+                return this.$store.state.changeScreen
+            },
+            set(changeScreen){
+                this.setChangeScreen(changeScreen)
+            }
+        }
     }
 }
 </script>

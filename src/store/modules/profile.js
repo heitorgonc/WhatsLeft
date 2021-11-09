@@ -17,6 +17,9 @@ export default {
             if(record){
                 state.funds += earningValue * quantity
             }
+        },
+        setFunds(state, funds){
+            state.funds = funds
         }
     },
     actions:{
@@ -49,7 +52,7 @@ export default {
                 }
             })
         },
-        funds(state) {
+        getFunds(state){
             return state.funds
         }
     }

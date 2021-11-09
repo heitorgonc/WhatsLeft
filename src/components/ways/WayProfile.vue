@@ -1,8 +1,30 @@
 <template lang="">
-    <v-container fluid>
-            <v-btn text to="/">Home</v-btn><span class="pl-5 pr-5"><strong>/</strong></span>
-            <v-btn text to="/profile">Profile</v-btn>
-    </v-container>
+    <v-layout 
+        align-center
+    >
+        <v-btn 
+            plain
+            small
+            to="/"
+        >Home
+        </v-btn>
+        <v-layout
+            align-center
+        >
+            <v-icon 
+                small
+                icon="mdi-arrow-right"
+                color="black"
+            >mdi-arrow-right
+            </v-icon>
+        </v-layout>
+        <v-btn 
+            small
+            plain
+            to="/profile"
+        >Profile
+        </v-btn>
+    </v-layout>
 </template>
 <script>
 export default {

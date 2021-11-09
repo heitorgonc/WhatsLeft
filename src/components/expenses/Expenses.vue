@@ -1,14 +1,13 @@
 <template>
-    <div>
-        <v-card>
-            <v-container>
-                <ExpenseRegister></ExpenseRegister>
-            </v-container>
-        </v-card>
-        <v-container>
+        <v-container
+            fluid
+            v-if="changeScreen"
+        >
+            <CreateBanner></CreateBanner>
             <v-layout 
                 row 
                 wrap
+                class="ma-5"
             >
                 <Expense 
                     v-for="expense in expenses" 
@@ -18,25 +17,30 @@
                 </Expense>
             </v-layout>
         </v-container>
-    </div>
+        <v-card class="mt-5" v-else>
+            <v-container>
+                <ExpenseRegister></ExpenseRegister>
+            </v-container>
+        </v-card>
 </template>
 
 <script>
 import Expense from './Expense'
 import ExpenseRegister from './ExpenseRegister.vue'
-import {mapGetters} from 'vuex'
+import CreateBanner from '../templates/banners/CreateBanner.vue'
 
 export default {
     components:{ 
         Expense,
-        ExpenseRegister
-    },
-    methods:{
-        ...mapGetters('expenses',['getExpenses'])
+        ExpenseRegister,
+        CreateBanner
     },
     computed:{
         expenses(){
-            return this.getExpenses()
+            return this.$store.state.expenses.expenses
+        },
+        changeScreen(){
+            return this.$store.state.changeScreen
         }
     }
 }

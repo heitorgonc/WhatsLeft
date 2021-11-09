@@ -1,11 +1,8 @@
 <template>
   <v-app>
-    <Header></Header>
+    <Header><router-view name="way"></router-view></Header>
     <v-main>
-      <router-view name="way"></router-view>
-      <v-container>
-        <router-view></router-view>
-      </v-container>
+      <router-view> </router-view>
     </v-main>
   </v-app>
 </template>
@@ -15,7 +12,9 @@
   import {mapActions} from 'vuex'
   
   export default{
-    components:{Header},
+    components : {
+      Header
+    },
     methods:{
       ...mapActions('expenses',['initExpenses'])
     },

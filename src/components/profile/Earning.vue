@@ -13,21 +13,21 @@
             <v-list-item three-line>
                 <v-list-item-content>
                     <div class="text-overline mb-4">
-                        Expense: {{expense.date}}
+                        Earning: {{earning.date}}
                     </div>
-                    <v-container class="mb-1" v-if="expense.description">
-                        <span class="text-h5">
-                            Description: {{expense.description}}
+                    <v-container class="mb-1">
+                        <span class="text-h5" v-if="earning.description">
+                            Description: {{earning.description}}
                         </span>
                     </v-container>
-                    <v-container class="mb-1" v-if="expense.price">
+                    <v-container class="mb-1" v-if="earning.value">
                         <span class="text-h5">
-                            Price: {{expense.price}}
+                            Value: {{earning.value}}
                         </span>
                     </v-container>
-                    <v-container class="mb-1" v-if="expense.quantity">
+                    <v-container class="mb-1" v-if="earning.quantity">
                         <span class="text-h5">
-                            Quantity: {{expense.quantity}}
+                            Quantity: {{earning.quantity}}
                         </span>
                     </v-container>
                 </v-list-item-content>
@@ -55,7 +55,7 @@
 // import {mapActions} from 'vuex'
 
 export default {
-    props: ['expense'],
+    props: ['earning'],
     data() {
         return {
             quantity: 0,

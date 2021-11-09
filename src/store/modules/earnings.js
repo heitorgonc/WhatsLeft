@@ -4,7 +4,7 @@ export default {
     namespaced: true,
     state: {
         earnings: [],
-        id: 0
+        id: 0,
     },
     mutations:{
         setEarnings(state, earnings){
@@ -26,11 +26,6 @@ export default {
         },
         initEarnings({commit}){
             commit('setEarnings', earnings)
-        }
-    },
-    getters:{
-        getEarnings(state){
-            return state.earnings
         }
     }
 }

@@ -24,7 +24,15 @@
             class="mt-5 ml-5 mb-5" 
             @click="addExpense"
             :disabled="price <= 0 || description == '' "
-        >Create Expense
+        >Save
+        </v-btn>
+        <v-btn 
+            outlined 
+            rounded 
+            text
+            class="mt-5 ml-5 mb-5" 
+            @click="changeScreen = true"
+        >Cancel
         </v-btn>
     </v-form>
 </template>
@@ -52,6 +60,7 @@ export default {
     methods:{
         ...mapActions('expenses', {addExpenseAction: 'addExpense'}),
         ...mapMutations('expenses', ['setId']),
+        ...mapMutations(['setChangeScreen']),
         addExpense(){
             const expense = {
                 id: this.id++,
@@ -60,6 +69,7 @@ export default {
             }
             this.addExpenseAction(expense)
             this.clear()
+            this.changeScreen = true
         },
         clear(){
             this.description = ''
@@ -74,6 +84,14 @@ export default {
             },
             set(id){
                 this.setId(id)
+            }
+        },
+        changeScreen:{
+            get(){
+                return this.$store.state.changeScreen
+            },
+            set(changeScreen){
+                this.setChangeScreen(changeScreen)
             }
         }
     }

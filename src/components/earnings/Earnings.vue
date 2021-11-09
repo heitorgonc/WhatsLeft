@@ -1,14 +1,14 @@
 <template>
-    <div>
-        <v-card>
-            <v-container>
-                <EarningsRegister></EarningsRegister>
-            </v-container>
-        </v-card>
-        <v-container>
+        <v-container
+            fluid
+            v-if="changeScreen"
+        >
+            <CreateBanner></CreateBanner>
             <v-layout 
                 row 
-                wrap>
+                wrap
+                class="ma-5"
+            >
                 <Earning 
                     v-for="earning in earnings" 
                     :key="earning.id"
@@ -17,25 +17,32 @@
                 </Earning>
             </v-layout>
         </v-container>
-    </div>
+        <v-card 
+            v-else
+        >
+            <v-container class="mt-5">
+                <EarningsRegister></EarningsRegister>
+            </v-container>
+        </v-card>
 </template>
 
 <script>
 import Earning from './Earning.vue'
 import EarningsRegister from './EarningRegister.vue'
-import {mapGetters} from 'vuex'
+import CreateBanner from  '../templates/banners/CreateBanner.vue'
 
 export default {
     components:{
         Earning,
-        EarningsRegister
-    },
-    methods:{
-        ...mapGetters('earnings',['getEarnings'])
+        EarningsRegister,
+        CreateBanner
     },
     computed:{
         earnings(){
-            return this.getEarnings()
+            return this.$store.state.earnings.earnings
+        },
+        changeScreen(){
+            return this.$store.state.changeScreen
         }
     }
 }

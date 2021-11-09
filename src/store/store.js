@@ -8,6 +8,14 @@ import profile from './modules/profile'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+    state : {
+        changeScreen: true
+    },
+    mutations : {
+        setChangeScreen(state, changeScreen){
+            state.changeScreen = changeScreen
+        }
+    },
     modules:{
         expenses,
         earnings,

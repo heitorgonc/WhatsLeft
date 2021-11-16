@@ -10,19 +10,21 @@
             max-width="344"
             outlined
         >
-            <v-layout juntfy-center align-center column>
-            <v-banner 
-                class=" text-overline mt-3"
-                single-line
+            <v-layout 
+                justify-center 
+                align-center 
+                column
             >
-                <span
-                    class="pr-3"
-                    @click.stop="deleteEarning"
+                <v-banner 
+                    class=" text-overline mt-3"
+                    single-line
                 >
                     <v-avatar
+                        class="pr-3"
                         slot="icon"
                         color="light-blue darken-3"
                         size="22"
+                        @click.stop="deleteEarning"
                     >
                         <v-icon 
                             size="x-medium"
@@ -31,36 +33,33 @@
                         >mdi-currency-usd
                         </v-icon>
                     </v-avatar>
+                    Earning: 
+                    <span v-if="profileEarning.date">{{profileEarning.date}}</span>
+                </v-banner>
+                <v-divider ></v-divider>
+                <span
+                    v-if="profileEarning.description"
+                    class="profileEarningTitle"
+                >{{profileEarning.description}}
                 </span>
-                Earning: 
-                <span v-if="profileEarning.date">
-                    {{profileEarning.date}}
+                <span
+                    v-if="profileEarning.value"
+                >
+                    <span class="profileEarningLabel">Value:</span> 
+                    {{profileEarning.value}}
                 </span>
-            </v-banner>
-            <v-divider ></v-divider>
-            <span 
-                v-if="profileEarning.description"
-                class="profileEarningTitle"
-            >{{profileEarning.description}}
-            </span>
-            <span
-                v-if="profileEarning.value"
-            >
-                <span class="profileEarningLabel">Value:</span> 
-                {{profileEarning.value}}
-            </span>
-            <span
-                v-if="profileEarning.quantity"
-            >
-                <span class="profileEarningLabel">Quantity:</span>
-                {{profileEarning.quantity}}
-            </span>
-            <span
-                v-if="profileEarning.value"
-            >
-                <span class="profileEarningLabel">Total:</span>
-                {{profileEarning.quantity * profileEarning.value}}
-            </span>
+                <span
+                    v-if="profileEarning.quantity"
+                >
+                    <span class="profileEarningLabel">Quantity:</span>
+                    {{profileEarning.quantity}}
+                </span>
+                <span
+                    v-if="profileEarning.value"
+                >
+                    <span class="profileEarningLabel">Total:</span>
+                    {{profileEarning.quantity * profileEarning.value}}
+                </span>
             </v-layout>
             <v-divider class="pb-2"></v-divider>
             <v-card-actions>
@@ -85,13 +84,14 @@
         </v-card>
     </v-flex>
 </template>
-<script>
 
+<script>
 export default {
     props: ['profileEarning'],
     methods:{}
 }
 </script>
+
 <style>
     
 </style>

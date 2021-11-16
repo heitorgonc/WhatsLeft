@@ -9,11 +9,23 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state : {
-        changeScreen: false
+        drawer: false,
+        group: null
     },
     mutations : {
-        setChangeScreen(state, changeScreen){
-            state.changeScreen = changeScreen
+        setDrawer(state, drawer){
+            state.drawer = drawer
+        },
+        setGroup(state, group){
+            state.group = group 
+        }
+    },
+    getters:{
+        drawer(state){
+            return state.drawer
+        },
+        group(state){
+            return state.group
         }
     },
     modules:{

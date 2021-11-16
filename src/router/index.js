@@ -9,7 +9,8 @@ import WayEarnings from '../components/templates/ways/WayEarnings'
 import WayProfile from '../components/templates/ways/WayProfile'
 import NewEarning from '../components/templates/banners/NewEarning'
 import NewExpense from '../components/templates/banners/NewExpense'
-import AppHeader from '../components/templates/headers/AppHeader'
+import HomeBar from '../components/templates/app-bars/HomeBar'
+import HomeDrawer from '../components/templates/drawers/HomeDrawer'
 
 Vue.use(Router)
 
@@ -20,7 +21,8 @@ const router = new Router({
       path: '/', 
       components: {
         default: Home,
-        headerHome: AppHeader
+        appbar: HomeBar,
+        drawer: HomeDrawer
       }
     },
     {
@@ -29,7 +31,8 @@ const router = new Router({
         default: Earnings,
         way: WayEarnings,
         banner: NewEarning,
-        headerHome: AppHeader
+        appbar: HomeBar,
+        drawer: HomeDrawer
       }
     },
     {
@@ -38,7 +41,8 @@ const router = new Router({
         default: Expenses, 
         way: WayExpenses,
         banner: NewExpense,
-        headerHome: AppHeader
+        appbar: HomeBar,
+        drawer: HomeDrawer
       }
     },
     {
@@ -46,7 +50,8 @@ const router = new Router({
       components:{
         default: Profile,
         way: WayProfile,
-        headerHome: AppHeader
+        appbar: HomeBar,
+        drawer: HomeDrawer
       }
     }
   ]

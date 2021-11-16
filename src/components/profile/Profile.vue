@@ -13,22 +13,38 @@
                     :profileEarning="profileEarning"
                 ></Earning>
             </v-layout>
+            <v-layout 
+                row
+                wrap
+            >
+                <Expense
+                    v-for="profileExpense in profileExpenses" 
+                    :key="profileExpense.id"
+                    :profileExpense="profileExpense"
+                ></Expense>
+            </v-layout>
         </v-container>
     </div>
 </template>
 
 <script>
-
+import Expense from './Expense'
 import Earning from './Earning'
 
 export default {
     components:{
-        Earning
+        Earning,
+        Expense
     },
     computed:{
         profileEarnings:{
             get(){
                 return this.$store.getters.profileEarnings
+            }
+        },
+        profileExpenses:{
+            get(){
+                return this.$store.getters.profileExpenses
             }
         }
     }

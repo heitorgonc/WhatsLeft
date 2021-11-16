@@ -1,7 +1,9 @@
 <template>
-    <v-banner 
+    <v-banner
+        app
         single-line
         color="primary"
+        class="mb-10"
     >
         <v-avatar
             slot="icon"

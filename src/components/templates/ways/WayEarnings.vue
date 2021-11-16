@@ -1,4 +1,4 @@
-<template lang="">
+<template>
     <v-banner
         single-line
     >
@@ -23,10 +23,12 @@
         </v-btn>
     </v-banner>
 </template>
+
 <script>
 export default {
 }
 </script>
-<style lang="">
+
+<style>
     
 </style>

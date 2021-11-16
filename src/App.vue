@@ -1,16 +1,20 @@
 <template>
-  <v-app app>
-    <router-view name="headerHome">
+  <v-app>
+    <router-view name="drawer"></router-view>
+    <router-view name="appbar">
       <template v-slot:way>
         <router-view name="way"></router-view>
       </template>
-      <template v-slot:app-banner>
-        <router-view name="banner"></router-view>
-      </template>
-      <template v-slot:main>
-        <router-view></router-view>
-      </template>
     </router-view>
+    <router-view name="banner"></router-view>
+    <main>
+      <v-container 
+        fluid
+        class="containerScreen"
+      >
+        <router-view></router-view>
+      </v-container>
+    </main>
   </v-app>
 </template>
 

@@ -13,8 +13,8 @@
         <v-layout
             row 
             wrap
-            class="ma-5"
             v-else
+            class="ma-5"
         >
             <Expense 
                 v-for="(expense, i) in expenses" 

@@ -14,29 +14,24 @@
                     align-center 
                     justify-center
                 >
-                    <span class="postitDescription">
-                        {{earning.description}} 
-                    </span>
-                    <span class="postitValue">
-                        ({{earning.value}} $)
-                    </span>
+                    <span class="postitDescription">{{earning.description}}</span>
+                    <span class="postitValue">({{earning.value}} $)</span>
                 </v-layout>
             </v-card-title>
             <v-card-actions class="close">
-                <span @click.stop="deleteEarning">
-                    <v-avatar
-                        slot="icon"
-                        color="black"
-                        size="20"
-                    >
-                        <v-icon 
-                            size="medium"
-                            icon="mdi-close"
-                            color="white"
-                        >mdi-close
-                        </v-icon>
-                    </v-avatar>
-                </span>
+                <v-avatar
+                    @click.stop="deleteEarning"
+                    slot="icon"
+                    color="black"
+                    size="20"
+                >
+                    <v-icon 
+                        size="medium"
+                        icon="mdi-close"
+                        color="white"
+                    >mdi-close
+                    </v-icon>
+                </v-avatar>
             </v-card-actions>
         </v-card>
         <v-card>

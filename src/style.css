@@ -3,7 +3,6 @@
     font-weight: 300;
     color: #fff;
 }
-
 #logo{
     cursor: pointer;
 }
@@ -30,7 +29,7 @@
     color: #1976D2;
 }
 .headerFunds{
-    color: #0e6408;
+    color: #117c09;
     font-size: 1.5;
     font-weight: 600;
 }

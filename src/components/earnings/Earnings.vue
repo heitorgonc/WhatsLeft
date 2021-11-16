@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <v-layout>
         <v-layout
             justify-center
             align-center
@@ -24,13 +24,12 @@
             >
             </Earning>
         </v-layout>
-    </div>
+    </v-layout>
 </template>
 
 <script>
 import Earning from './Earning.vue'
 import EarningsRegister from './EarningRegister.vue'
-
 
 export default {
     components:{

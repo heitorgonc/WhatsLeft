@@ -7,28 +7,23 @@
     >
         <v-card class="black">
             <v-card-title class="headline">
-                <span class="word1">
-                    New
-                </span>
-                <span class="word2">
-                    Post-it
-                </span>
+                <span class="word1">New</span>
+                <span class="word2">Post-it</span>
             </v-card-title>
             <v-card-actions class="close">
-                <span @click.stop="earningCadForm = false">
-                    <v-avatar
-                        slot="icon"
-                        color="white"
-                        size="20"
-                    >
-                        <v-icon 
-                            size="medium"
-                            icon="mdi-close"
-                            color="black"
-                        >mdi-close
-                        </v-icon>
-                    </v-avatar>
-                </span>
+                <v-avatar
+                    slot="icon"
+                    color="white"
+                    size="20"
+                    @click.stop="earningCadForm = false"
+                >
+                    <v-icon 
+                        size="medium"
+                        icon="mdi-close"
+                        color="black"
+                    >mdi-close
+                    </v-icon>
+                </v-avatar>
             </v-card-actions>
         </v-card>
         <v-card>

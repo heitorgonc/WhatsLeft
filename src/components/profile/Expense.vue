@@ -12,23 +12,15 @@
         >
             <v-list-item three-line>
                 <v-list-item-content>
-                    <div class="text-overline mb-4">
-                        Expense: {{expense.date}}
-                    </div>
+                    <div class="text-overline mb-4">Expense: {{expense.date}}</div>
                     <v-container class="mb-1" v-if="expense.description">
-                        <span class="text-h5">
-                            Description: {{expense.description}}
-                        </span>
+                        <span class="text-h5">Description: {{expense.description}}</span>
                     </v-container>
                     <v-container class="mb-1" v-if="expense.price">
-                        <span class="text-h5">
-                            Price: {{expense.price}}
-                        </span>
+                        <span class="text-h5">Price: {{expense.price}}</span>
                     </v-container>
                     <v-container class="mb-1" v-if="expense.quantity">
-                        <span class="text-h5">
-                            Quantity: {{expense.quantity}}
-                        </span>
+                        <span class="text-h5">Quantity: {{expense.quantity}}</span>
                     </v-container>
                 </v-list-item-content>
             </v-list-item>
@@ -37,15 +29,13 @@
                     outlined
                     rounded
                     text
-                >
-                Edit
+                >Edit
                 </v-btn>
                 <v-btn
                     outlined
                     rounded
                     text
-                >
-                Exclude
+                >Exclude
                 </v-btn>
             </v-card-actions>
         </v-card>

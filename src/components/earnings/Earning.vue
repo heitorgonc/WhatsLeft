@@ -1,65 +1,124 @@
 <template>
-    <v-flex class="pr-5 pt-5" xs12 md6 lg4>
-        <v-card class="blue darken-3 white--text">
+    <v-flex 
+        class="pr-5 pt-5" 
+        xs12 
+        md6 
+        lg4
+    >
+        <v-card 
+            rounded
+            class="blue darken-3 white--text"
+        >
             <v-card-title class="headline">
-                <strong>
-                    {{earning.description}} 
-                    <small>
-                        (Value: {{earning.value}})
-                    </small>
-                </strong>
+                <v-layout 
+                    align-center 
+                    justify-center
+                >
+                    <span class="postitDescription">
+                        {{earning.description}} 
+                    </span>
+                    <span class="postitValue">
+                        ({{earning.value}} $)
+                    </span>
+                </v-layout>
             </v-card-title>
+            <v-card-actions class="close">
+                <span @click.stop="deleteEarning">
+                    <v-avatar
+                        slot="icon"
+                        color="black"
+                        size="20"
+                    >
+                        <v-icon 
+                            size="medium"
+                            icon="mdi-close"
+                            color="white"
+                        >mdi-close
+                        </v-icon>
+                    </v-avatar>
+                </span>
+            </v-card-actions>
         </v-card>
         <v-card>
             <v-container 
                 fill 
                 height
             >
-                <v-text-field 
-                    label="Date" 
-                    type="date" 
-                    v-model="date"
-                >
-                </v-text-field>
-                <v-text-field 
-                    label="Quantity" 
-                    type="number" 
-                    v-model.number="quantity"
-                >
-                </v-text-field>
-                <v-btn 
-                    class="green darken-3 white--text"
-                    :disabled="quantity <= 0 || !Number.isInteger(quantity)"
-                    @click="confirmEarning"
-                >Confirm
-                </v-btn>
+                <v-form ref="form">
+                    <v-text-field
+                        label="Date"
+                        type="date" 
+                        v-model="date"
+                    >
+                    </v-text-field>
+                    <v-text-field 
+                        class="pb-3"
+                        label="Quantity" 
+                        type="number"
+                        :counter="10"
+                        :rules="quantityRules"
+                        v-model="quantity"
+                    >
+                    </v-text-field>
+                    <v-divider></v-divider>
+                    <v-btn 
+                        class="ml-3 mt-3"
+                        text
+                        color="success"
+                        :disabled="quantity <= 0 || date == ''"
+                        @click="confirmEarning"
+                    >Confirm
+                    </v-btn>
+                </v-form>
             </v-container>
         </v-card>
     </v-flex>
 </template>
 <script>
-import {mapActions} from 'vuex'
 
 export default {
-    props: ['earning'],
+    props: ['earning', 'i'],
     data() {
         return {
-            quantity: 0,
-            date: this.date
+            date: new Date().toISOString().slice(0, 10),
+            quantity: '',
+            id: 0,
+            quantityRules:[
+                v => !!v || 'Quantity is required',
+                v => v.length <= 10 || 'Quantity must be less than 10 characters',
+                v => v > 0 || 'The quantity can be neither zero nor negative',
+            ]
         }
     },
     methods:{
-        ...mapActions('earnings',{confirmEarningAction: 'confirmEarning'}),
         confirmEarning() {
-            const earning = {
-                earningId: this.earning.id,
-                earningValue: this.earning.value,
+            const confirmedEarning = {
+                quantity: this.quantity, 
+                value: this.earning.value
+            }
+            this.$store.dispatch('confirmEarning', confirmedEarning)
+            this.addProfileEarning()
+            this.clear()
+        },
+        addProfileEarning(){
+            const profileEarning = {
+                id: this.id++,
+                description: this.earning.description,
+                value: this.earning.value,
                 date: this.date,
                 quantity: this.quantity
             }
-            this.confirmEarningAction(earning)
-            this.quantity = 0
-        }
+            this.$store.dispatch('addProfileEarning', profileEarning)
+        },
+        clear(){
+            this.date = new Date().toISOString().slice(0, 10),
+            this.quantity = ''
+            this.$refs.form.resetValidation()
+        },
+        deleteEarning(){
+            const indexItem = this.i
+            this.$store.dispatch('deleteEarningPostit', indexItem)
+        },
     }
 }
 </script>

@@ -1,10 +1,10 @@
 import earnings from '../../data/earnings'
 
 export default {
-    namespaced: true,
     state: {
         earnings: [],
-        id: 0,
+        earningId: 0,
+        earningCadForm: false
     },
     mutations:{
         setEarnings(state, earnings){
@@ -13,19 +13,42 @@ export default {
         addEarning(state, earning){
             state.earnings.push(earning)
         },
-        setId(state, id){
-            state.id = id
+        setEarningId(state, earningId){
+            state.earningId = earningId
+        },
+        deleteEarning(state, index){
+            state.earnings.splice(index,1)
+        },
+        setEarningCadForm(state, earningCadForm){
+            state.earningCadForm = earningCadForm
         }
     },
     actions:{
-        confirmEarning({commit}){
-            commit()
+        confirmEarning({ commit }, confirmedEarning){
+            commit('confirmEarning', confirmedEarning)
         },
-        addEarning(context, earning){
-            context.commit('addEarning', earning)
+        addProfileEarning({commit}, earning){
+            commit('addProfileEarning', earning)
+        },
+        addEarning({commit}, earning){
+            commit('addEarning', earning)
         },
         initEarnings({commit}){
             commit('setEarnings', earnings)
+        },
+        deleteEarningPostit({commit}, index){
+            commit('deleteEarning', index)
+        }
+    },
+    getters:{
+        earnings(state){
+            return state.earnings
+        },
+        earningId(state){
+            return state.earningId
+        },
+        earningCadForm(state){
+            return state.earningCadForm
         }
     }
 }

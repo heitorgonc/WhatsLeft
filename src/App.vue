@@ -1,25 +1,18 @@
 <template>
-  <v-app>
-    <Header><router-view name="way"></router-view></Header>
-    <v-main>
-      <router-view> </router-view>
-    </v-main>
+  <v-app app>
+    <router-view name="headerHome">
+      <template v-slot:way>
+        <router-view name="way"></router-view>
+      </template>
+      <template v-slot:app-banner>
+        <router-view name="banner"></router-view>
+      </template>
+      <template v-slot:main>
+        <router-view></router-view>
+      </template>
+    </router-view>
   </v-app>
 </template>
 
 <script>
-  import Header from './components/Header.vue'
-  import {mapActions} from 'vuex'
-  
-  export default{
-    components : {
-      Header
-    },
-    methods:{
-      ...mapActions('expenses',['initExpenses'])
-    },
-    created(){
-      this.initExpenses()
-    }
-  }
 </script>

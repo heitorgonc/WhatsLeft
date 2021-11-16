@@ -1,46 +1,47 @@
 <template>
-        <v-container
-            fluid
-            v-if="changeScreen"
+    <v-layout>
+        <v-layout
+            row
+            wrap
+            align-center
+            justify-center
+            class="ma-5"
+            v-if="expenseCadForm"
         >
-            <CreateBanner></CreateBanner>
-            <v-layout 
-                row 
-                wrap
-                class="ma-5"
+            <ExpenseRegister></ExpenseRegister>
+        </v-layout>
+        <v-layout
+            row 
+            wrap
+            class="ma-5"
+            v-else
+        >
+            <Expense 
+                v-for="(expense, i) in expenses" 
+                :key="expense.id" 
+                :expense="expense"
+                :i="i"
             >
-                <Expense 
-                    v-for="expense in expenses" 
-                    :key="expense.id" 
-                    :expense="expense"
-                >
-                </Expense>
-            </v-layout>
-        </v-container>
-        <v-card class="mt-5" v-else>
-            <v-container>
-                <ExpenseRegister></ExpenseRegister>
-            </v-container>
-        </v-card>
+            </Expense>
+        </v-layout>
+    </v-layout>
 </template>
 
 <script>
 import Expense from './Expense'
 import ExpenseRegister from './ExpenseRegister.vue'
-import CreateBanner from '../templates/banners/CreateBanner.vue'
 
 export default {
     components:{ 
         Expense,
-        ExpenseRegister,
-        CreateBanner
+        ExpenseRegister
     },
     computed:{
         expenses(){
-            return this.$store.state.expenses.expenses
+            return this.$store.getters.expenses
         },
-        changeScreen(){
-            return this.$store.state.changeScreen
+        expenseCadForm(){
+            return this.$store.getters.expenseCadForm
         }
     }
 }

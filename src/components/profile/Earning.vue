@@ -10,37 +10,71 @@
             max-width="344"
             outlined
         >
-            <v-list-item three-line>
-                <v-list-item-content>
-                    <div class="text-overline mb-4">
-                        Earning: {{earning.date}}
-                    </div>
-                    <v-container class="mb-1">
-                        <span class="text-h5" v-if="earning.description">
-                            Description: {{earning.description}}
-                        </span>
-                    </v-container>
-                    <v-container class="mb-1" v-if="earning.value">
-                        <span class="text-h5">
-                            Value: {{earning.value}}
-                        </span>
-                    </v-container>
-                    <v-container class="mb-1" v-if="earning.quantity">
-                        <span class="text-h5">
-                            Quantity: {{earning.quantity}}
-                        </span>
-                    </v-container>
-                </v-list-item-content>
-            </v-list-item>
+            <v-layout juntfy-center align-center column>
+            <v-banner 
+                class=" text-overline mt-3"
+                single-line
+            >
+                <span
+                    class="pr-3"
+                    @click.stop="deleteEarning"
+                >
+                    <v-avatar
+                        slot="icon"
+                        color="light-blue darken-3"
+                        size="22"
+                    >
+                        <v-icon 
+                            size="x-medium"
+                            icon="mdi-currency-usd"
+                            color="white"
+                        >mdi-currency-usd
+                        </v-icon>
+                    </v-avatar>
+                </span>
+                Earning: 
+                <span v-if="profileEarning.date">
+                    {{profileEarning.date}}
+                </span>
+            </v-banner>
+            <v-divider ></v-divider>
+            <span 
+                v-if="profileEarning.description"
+                class="profileEarningTitle"
+            >{{profileEarning.description}}
+            </span>
+            <span
+                v-if="profileEarning.value"
+            >
+                <span class="profileEarningLabel">Value:</span> 
+                {{profileEarning.value}}
+            </span>
+            <span
+                v-if="profileEarning.quantity"
+            >
+                <span class="profileEarningLabel">Quantity:</span>
+                {{profileEarning.quantity}}
+            </span>
+            <span
+                v-if="profileEarning.value"
+            >
+                <span class="profileEarningLabel">Total:</span>
+                {{profileEarning.quantity * profileEarning.value}}
+            </span>
+            </v-layout>
+            <v-divider class="pb-2"></v-divider>
             <v-card-actions>
                 <v-btn
+                    class="ml-5"
                     outlined
                     rounded
                     text
                 >
                 Edit
                 </v-btn>
+                <v-spacer></v-spacer>
                 <v-btn
+                    class="mr-5"
                     outlined
                     rounded
                     text
@@ -52,16 +86,9 @@
     </v-flex>
 </template>
 <script>
-// import {mapActions} from 'vuex'
 
 export default {
-    props: ['earning'],
-    data() {
-        return {
-            quantity: 0,
-            date: this.date
-        }
-    },
+    props: ['profileEarning'],
     methods:{}
 }
 </script>

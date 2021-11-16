@@ -1,45 +1,87 @@
 <template>
-    <v-form ref="form">
-        <v-text-field 
-            v-model="description" 
-            :counter="15"
-            :rules="descriptionRules"
-            label="Description"
-            required
-        >
-        </v-text-field>
-        <v-text-field 
-            type="number" 
-            v-model="price"
-            :counter="10"
-            :rules="priceRules"
-            label="Price"
-            required
-        >
-        </v-text-field>
-        <v-btn 
-            outlined 
-            rounded 
-            text
-            class="mt-5 ml-5 mb-5" 
-            @click="addExpense"
-            :disabled="price <= 0 || description == '' "
-        >Save
-        </v-btn>
-        <v-btn 
-            outlined 
-            rounded 
-            text
-            class="mt-5 ml-5 mb-5" 
-            @click="changeScreen = true"
-        >Cancel
-        </v-btn>
-    </v-form>
+    <v-flex
+        class="pr-5 pt-5"
+        xs12
+        md6
+        lg4
+    >
+        <v-card class="black">
+            <v-card-title class="headline">
+                <span class="word1">
+                    New
+                </span>
+                <span class="word2">
+                    Post-it
+                </span>
+            </v-card-title>
+            <v-card-actions class="close">
+                <span @click.stop="expenseCadForm = false">
+                    <v-avatar 
+                        slot="icon"
+                        color="white"
+                        size="20"
+                    >
+                        <v-icon
+                            size="medium"
+                            icon="mdi-close"
+                            color="black"
+                        >mdi-close
+                        </v-icon>
+                    </v-avatar>
+                </span>
+            </v-card-actions>
+        </v-card>
+        <v-card>
+            <v-container
+                fill
+                height
+            >
+                <v-form ref="form">
+                    <v-text-field 
+                        v-model="description" 
+                        :counter="15"
+                        :rules="descriptionRules"
+                        label="Description"
+                        required
+                    >
+                    </v-text-field>
+                    <v-text-field 
+                        class="pb-3"
+                        type="number" 
+                        v-model="price"
+                        :counter="10"
+                        :rules="priceRules"
+                        label="Price"
+                        required
+                    >
+                    </v-text-field>
+                    <v-divider></v-divider>
+                    <v-btn
+                        text
+                        class="mt-3 ml-3" 
+                        @click="expenseCadForm = false"
+                        color="error"
+                    >Cancel
+                    </v-btn>
+                    <v-btn 
+                        text
+                        class="mt-3 ml-3"
+                        color="primary"
+                        @click="addExpense"
+                        :disabled="
+                            price <= 0 || 
+                            description == '' || 
+                            Number.isInteger(description)
+                        "
+                    >Create
+                    </v-btn>
+                </v-form>
+            </v-container>
+        </v-card>
+    </v-flex>
 </template>
 
 <script>
-import {mapActions} from 'vuex'
-import {mapMutations} from 'vuex'
 
 export default {
     data(){
@@ -58,18 +100,15 @@ export default {
         }
     },
     methods:{
-        ...mapActions('expenses', {addExpenseAction: 'addExpense'}),
-        ...mapMutations('expenses', ['setId']),
-        ...mapMutations(['setChangeScreen']),
         addExpense(){
             const expense = {
                 id: this.id++,
                 description: this.description,
                 price: this.price
             }
-            this.addExpenseAction(expense)
+            this.expenseCadForm = false
+            this.$store.dispatch('addExpense', expense)
             this.clear()
-            this.changeScreen = true
         },
         clear(){
             this.description = ''
@@ -80,18 +119,18 @@ export default {
     computed:{
         id:{
             get(){
-                return this.$store.state.expenses.id
+                return this.$store.getters.expenseId
             },
-            set(id){
-                this.setId(id)
+            set(expenseId){
+                this.$store.commit("setExpenseId", expenseId)
             }
         },
-        changeScreen:{
+        expenseCadForm:{
             get(){
-                return this.$store.state.changeScreen
+                return this.$store.getters.expenseCadForm
             },
-            set(changeScreen){
-                this.setChangeScreen(changeScreen)
+            set(expenseCadForm){
+                this.$store.commit('setExpenseCadForm', expenseCadForm)
             }
         }
     }

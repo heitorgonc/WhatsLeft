@@ -1,65 +1,124 @@
 <template>
-    <v-flex class="pr-5 pt-5" xs12 md6 lg4>
-        <v-card class="red darken-3 white--text">
+    <v-flex 
+        class="pr-5 pt-5" 
+        xs12 
+        md6 
+        lg4
+    >
+        <v-card 
+            rounded
+            class="red darken-3 white--text"
+        >
             <v-card-title class="headline">
-                <strong>
-                    {{expense.description}} 
-                    <small>
-                        (Price: {{expense.price}})
-                    </small>
-                </strong>
+                <v-layout
+                    align-center
+                    justify-center
+                >
+                    <span class="postitDescription">
+                        {{expense.description}} 
+                    </span>
+                    <span class="postitValue">
+                        ({{expense.price}} $)
+                    </span>
+                </v-layout>
             </v-card-title>
+            <v-card-actions class="close">
+                <span @click.stop="deleteEarning">
+                    <v-avatar
+                        slot="icon"
+                        color="black"
+                        size="20"
+                    >
+                        <v-icon 
+                            size="small"
+                            icon="mdi-close"
+                            color="white"
+                        >mdi-close
+                        </v-icon>
+                    </v-avatar>
+                </span>
+            </v-card-actions>
         </v-card>
         <v-card>
             <v-container 
                 fill 
                 height
             >
-                <v-text-field 
-                    label="Date" 
-                    type="date" 
-                    v-model="date"
-                >
-                </v-text-field>
-                <v-text-field 
-                    label="Quantity" 
-                    type="number" 
-                    v-model.number="quantity"
-                >
-                </v-text-field>
-                <v-btn 
-                    class="green darken-3 white--text"
-                    :disabled="quantity <= 0 || !Number.isInteger(quantity)"
-                    @click="confirmExpense"
-                >Confirm
-                </v-btn>
+                <v-form ref="form">
+                    <v-text-field
+                        label="Date" 
+                        type="date" 
+                        v-model="date"
+                    >
+                    </v-text-field>
+                    <v-text-field 
+                        class="pb-3"
+                        label="Quantity" 
+                        type="number"
+                        :counter="10"
+                        :rules="quantityRules"
+                        v-model="quantity"
+                    >
+                    </v-text-field>
+                    <v-divider></v-divider>
+                    <v-btn 
+                        class="ml-3 mt-3"
+                        text
+                        color="success"
+                        :disabled="quantity <= 0 || date == ''"
+                        @click="confirmExpense"
+                    >Confirm
+                    </v-btn>
+                </v-form>
             </v-container>
         </v-card>
     </v-flex>
 </template>
 <script>
-import {mapActions} from 'vuex'
 
 export default {
-    props: ['expense'],
+    props: ['expense', 'i'],
     data() {
         return {
-            quantity: 0,
-            date: this.date
+            date: new Date().toISOString().slice(0, 10),
+            id: 0,
+            quantity: '',
+            quantityRules:[
+                v => !!v || 'Quantity is required',
+                v => v.length <= 10 || 'Quantity must be less than 10 characters',
+                v => v > 0 || 'The quantity can be neither zero nor negative',
+            ]
         }
     },
     methods:{
-        ...mapActions('expenses', {confirmExpenseAction: 'confirmExpense'}),
         confirmExpense() {
-            const expense = {
-                expenseId: this.expense.id,
-                expensePrice: this.expense.price,
+            const confirmedExpense = {
+                price: this.expense.price,
+                quantity: this.quantity
+            }
+            this.$store.dispatch('confirmExpense', confirmedExpense)
+            this.addProfileExpense()
+            this.clear()
+        },
+        addProfileExpense(){
+            const profileExpense = {
+                id: this.id++,
+                description: this.expense.description,
+                price: this.expense.price,
                 date: this.date,
                 quantity: this.quantity
             }
-            this.confirmExpenseAction(expense)
-            this.quantity = 0
-        }
+            this.$store.dispatch('addProfileExpense', profileExpense)
+        },
+        clear(){
+            this.date = new Date().toISOString().slice(0, 10),
+            this.quantity = ''
+            this.$refs.form.resetValidation()
+        },
+        deleteEarning(){
+            const indexItem = this.i
+            this.$store.dispatch('deleteExpensePostit', indexItem)
+        },
     }
 }
 </script>

@@ -1,8 +1,11 @@
 <template>
-    <v-banner two-line class="mb-5">
+    <v-banner 
+        single-line
+        color="red"
+    >
         <v-avatar
             slot="icon"
-            color="light-blue darken-4"
+            color="red darken-4"
             size="40"
         >
             <v-icon 
@@ -14,9 +17,10 @@
         <span class="bannerText">Do you want to create a new post-it ?</span>
         <template v-slot:actions>
             <v-btn
+                class="mr-5"
                 text
-                color="blue darken-4"
-                @click="changeScreen = false"
+                color="white"
+                @click="expenseCadForm = true"
             >new post-it
             </v-btn>
         </template>
@@ -24,19 +28,15 @@
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
 
 export default {
-    methods:{
-        ...mapMutations(['setChangeScreen'])
-    },
     computed:{
-        changeScreen:{
+        expenseCadForm:{
             get(){
-                return this.$store.state.changeScreen
+                return this.$store.getters.expenseCadForm
             },
-            set(changeScreen){
-                this.setChangeScreen(changeScreen)
+            set(expenseCadForm){
+                this.$store.commit('setExpenseCadForm', expenseCadForm)
             }
         }
     }

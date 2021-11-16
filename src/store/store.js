@@ -9,7 +9,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state : {
-        changeScreen: true
+        changeScreen: false
     },
     mutations : {
         setChangeScreen(state, changeScreen){

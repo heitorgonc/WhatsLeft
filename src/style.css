@@ -1,9 +1,65 @@
 .bannerText{
-    font-size: 2rem;
-    font-weight: 200;
-    color: rgb(59, 59, 59);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #fff;
 }
 
 #logo{
     cursor: pointer;
+}
+
+.containerScreen{
+    background-color: rgba(0, 0, 0, 0.780);
+    width: 100vw;
+    height: 100vh;
+}
+
+.registerOutdoor{
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 300;
+}
+.word1{
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+.word2{
+    font-weight: 300;
+    padding-left: 5px;
+    color: #1976D2;
+}
+.headerFunds{
+    color: #0e6408;
+    font-size: 1.5;
+    font-weight: 600;
+}
+.postitDescription{
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding-right: 10px;
+}
+.postitValue{
+    font-size: 1.1rem;
+}
+
+.close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.profileEarningTitle{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    padding-bottom: 2px;
+}
+
+.profileEarningLabel{
+    font-size: 1rem;
+    font-weight: 600;
+    padding-right: 2px;
 }

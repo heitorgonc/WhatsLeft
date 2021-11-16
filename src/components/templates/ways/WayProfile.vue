@@ -1,5 +1,6 @@
 <template lang="">
-    <v-layout 
+    <v-banner
+        single-line
         align-center
     >
         <v-btn 
@@ -8,23 +9,20 @@
             to="/"
         >Home
         </v-btn>
-        <v-layout
-            align-center
-        >
-            <v-icon 
-                small
-                icon="mdi-arrow-right"
-                color="black"
-            >mdi-arrow-right
-            </v-icon>
-        </v-layout>
+        <v-icon 
+            small
+            icon="mdi-arrow-right"
+            color="black"
+        >mdi-arrow-right
+        </v-icon>
         <v-btn 
+            color="primary"
             small
             plain
             to="/profile"
         >Profile
         </v-btn>
-    </v-layout>
+    </v-banner>
 </template>
 <script>
 export default {

@@ -1,27 +1,16 @@
 <template>
     <div>
-        <v-container>
-            
-        </v-container>
-        <v-container>
+        <v-container
+            fluid
+        >
             <v-layout 
                 row
-                wrap>
-                <Expense 
-                    v-for="expense in expenses" 
-                    :key="expense.id"
-                    :expense="expense"
-                ></Expense>
-            </v-layout>
-        </v-container>
-        <v-container>
-            <v-layout 
-                row
-                wrap>
+                wrap
+            >
                 <Earning
-                    v-for="earning in earnings" 
-                    :key="earning.id"
-                    :earning="earning"
+                    v-for="profileEarning in profileEarnings" 
+                    :key="profileEarning.id"
+                    :profileEarning="profileEarning"
                 ></Earning>
             </v-layout>
         </v-container>
@@ -29,31 +18,17 @@
 </template>
 
 <script>
-import Expense from './Expense'
+
 import Earning from './Earning'
-import {mapMutations} from 'vuex'
 
 export default {
     components:{
-        Expense,
         Earning
     },
-    methods:{
-        ...mapMutations('profile', ["setFunds"])
-    },
     computed:{
-        expenses(){
-            return this.$store.state.expenses.expenses
-        },
-        earnings(){
-            return this.$store.state.earnings.earnings
-        },
-        funds:{
+        profileEarnings:{
             get(){
-                return this.$store.state.profile.funds
-            },
-            set(funds){
-                this.setFunds(funds)
+                return this.$store.getters.profileEarnings
             }
         }
     }

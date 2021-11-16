@@ -13,6 +13,7 @@
                 <span class="font-weight-light">left</span>
             </v-btn>
         </v-toolbar-title>
+        <v-spacer></v-spacer>
         <v-toolbar-items>
             <v-btn 
                 text 
@@ -32,29 +33,25 @@
         </v-toolbar-items>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-            <slot></slot>
-        </v-toolbar-items>
-        <v-spacer></v-spacer>
-        <v-toolbar-items>
             <v-layout align-center>
                 <span class="text-uppercase grey--text text--darken-2">
                     Remaining: {{funds}}
                 </span>
             </v-layout>
         </v-toolbar-items>
+        <v-spacer></v-spacer>
+        <v-toolbar-items>
+            <slot></slot>
+        </v-toolbar-items>
     </v-app-bar>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
 
 export default {
-    methods:{
-        ...mapGetters('profile', ['getFunds'])
-    },
     computed:{
         funds(){
-            return this.getFunds()
+            return this.$store.getters.funds
         }
     }
 }

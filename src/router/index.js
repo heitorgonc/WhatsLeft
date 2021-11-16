@@ -4,9 +4,12 @@ import Home from '../components/Home'
 import Earnings from '../components/earnings/Earnings'
 import Expenses from '../components/expenses/Expenses'
 import Profile from '../components/profile/Profile'
-import WayExpenses from '../components/ways/WayExpenses'
-import WayEarnings from '../components/ways/WayEarnings'
-import WayProfile from '../components/ways/WayProfile'
+import WayExpenses from '../components/templates/ways/WayExpenses'
+import WayEarnings from '../components/templates/ways/WayEarnings'
+import WayProfile from '../components/templates/ways/WayProfile'
+import NewEarning from '../components/templates/banners/NewEarning'
+import NewExpense from '../components/templates/banners/NewExpense'
+import AppHeader from '../components/templates/headers/AppHeader'
 
 Vue.use(Router)
 
@@ -15,27 +18,35 @@ const router = new Router({
   routes: [
     {
       path: '/', 
-      component: Home  
+      components: {
+        default: Home,
+        headerHome: AppHeader
+      }
     },
     {
       path: '/earnings', 
       components: {
         default: Earnings,
-        way: WayEarnings
+        way: WayEarnings,
+        banner: NewEarning,
+        headerHome: AppHeader
       }
     },
     {
       path: '/expenses', 
       components: {
         default: Expenses, 
-        way: WayExpenses
+        way: WayExpenses,
+        banner: NewExpense,
+        headerHome: AppHeader
       }
     },
     {
       path: '/profile',
       components:{
         default: Profile,
-        way: WayProfile
+        way: WayProfile,
+        headerHome: AppHeader
       }
     }
   ]

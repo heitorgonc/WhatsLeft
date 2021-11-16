@@ -1,48 +1,48 @@
 <template>
-        <v-container
-            fluid
-            v-if="changeScreen"
+    <div>
+        <v-layout
+            justify-center
+            align-center
+            row
+            wrap
+            class="ma-5"
+            v-if="earningCadForm"
         >
-            <CreateBanner></CreateBanner>
-            <v-layout 
-                row 
-                wrap
-                class="ma-5"
-            >
-                <Earning 
-                    v-for="earning in earnings" 
-                    :key="earning.id"
-                    :earning="earning"
-                >
-                </Earning>
-            </v-layout>
-        </v-container>
-        <v-card 
+            <EarningsRegister></EarningsRegister>
+        </v-layout>
+        <v-layout      
+            row 
+            wrap
+            class="ma-5"
             v-else
         >
-            <v-container class="mt-5">
-                <EarningsRegister></EarningsRegister>
-            </v-container>
-        </v-card>
+            <Earning 
+                v-for="(earning, i) in earnings" 
+                :key="earning.id"
+                :earning="earning"
+                :i="i"
+            >
+            </Earning>
+        </v-layout>
+    </div>
 </template>
 
 <script>
 import Earning from './Earning.vue'
 import EarningsRegister from './EarningRegister.vue'
-import CreateBanner from  '../templates/banners/CreateBanner.vue'
+
 
 export default {
     components:{
         Earning,
-        EarningsRegister,
-        CreateBanner
+        EarningsRegister
     },
     computed:{
-        earnings(){
-            return this.$store.state.earnings.earnings
+        earningCadForm(){
+            return this.$store.getters.earningCadForm
         },
-        changeScreen(){
-            return this.$store.state.changeScreen
+        earnings(){
+            return this.$store.getters.earnings
         }
     }
 }

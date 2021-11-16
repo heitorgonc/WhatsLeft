@@ -1,45 +1,88 @@
 <template>
-    <v-form ref="form">
-        <v-text-field 
-            v-model="description"
-            :rules="descriptionRules"
-            :counter="15"
-            label="Description"
-            required
-        >
-        </v-text-field>
-        <v-text-field 
-            type="number" 
-            v-model="value"
-            :counter="10"
-            :rules="valueRules"
-            label="Value"
-            required
-        >
-        </v-text-field>
-        <v-btn
-            outlined 
-            rounded 
-            text
-            class="mt-5 ml-5 mb-5" 
-            @click="addEarning"
-            :disabled="value <= 0 || description == ''"
-        >Save
-        </v-btn>
-        <v-btn
-            outlined 
-            rounded 
-            text
-            class="mt-5 ml-5 mb-5" 
-            @click="changeScreen = true"
-        >Cancel
-        </v-btn>
-    </v-form>
+    <v-flex
+        class="pr-5 pt-5"
+        xs12 
+        md6 
+        lg4
+    >
+        <v-card class="black">
+            <v-card-title class="headline">
+                <span class="word1">
+                    New
+                </span>
+                <span class="word2">
+                    Post-it
+                </span>
+            </v-card-title>
+            <v-card-actions class="close">
+                <span @click.stop="earningCadForm = false">
+                    <v-avatar
+                        slot="icon"
+                        color="white"
+                        size="20"
+                    >
+                        <v-icon 
+                            size="medium"
+                            icon="mdi-close"
+                            color="black"
+                        >mdi-close
+                        </v-icon>
+                    </v-avatar>
+                </span>
+            </v-card-actions>
+        </v-card>
+        <v-card>
+            <v-container
+                fill
+                height
+            >
+                <v-form ref="form">
+                    <v-text-field
+                        type="text"
+                        v-model="description"
+                        :rules="descriptionRules"
+                        :counter="15"
+                        label="Description"
+                        required
+                    >
+                    </v-text-field>
+                    <v-text-field 
+                        class="pb-3"
+                        type="number" 
+                        v-model="value"
+                        :counter="10"
+                        :rules="valueRules"
+                        label="Value"
+                        required
+                    >
+                    </v-text-field>
+                    <v-divider></v-divider>
+                    <v-btn
+                        class="ml-3 mt-3"
+                        color="error"
+                        text
+                        @click="earningCadForm = false"
+                    >Cancel
+                    </v-btn>
+                    <v-btn
+                        class="ml-3 mt-3"
+                        color="primary"
+                        text
+                        @click="addEarning"
+                        :disabled="
+                            value <= 0 ||
+                            description == '' || 
+                            Number.isInteger(description)
+                        "
+                    >Create
+                    </v-btn>
+                </v-form>
+            </v-container>
+        </v-card>
+    </v-flex>
 </template>
 
 <script>
-import {mapActions} from 'vuex'
-import {mapMutations} from 'vuex'
 
 export default {
     data(){
@@ -58,18 +101,15 @@ export default {
         }
     },
     methods:{
-        ...mapActions('earnings', {addEarningAction: 'addEarning'}),
-        ...mapMutations('earnings', ['setId']),
-        ...mapMutations(['setChangeScreen']),
         addEarning(){
             const earning = {
                 id: this.id++,
                 description: this.description,
                 value: this.value
             }
-            this.addEarningAction(earning)
+            this.earningCadForm = false
+            this.$store.dispatch('addEarning', earning)
             this.clear()
-            this.changeScreen = true
         },
         clear(){
             this.description = ''
@@ -80,18 +120,18 @@ export default {
     computed:{
         id:{
             get(){
-                return this.$store.state.earnings.id
+                return this.$store.getters.earningId
             },
-            set(id){
-                this.setId(id)
+            set(earningId){
+                this.$store.commit('setEarningId', earningId)
             }
         },
-        changeScreen:{
+        earningCadForm:{
             get(){
-                return this.$store.state.changeScreen
+                return this.$store.getters.earningCadForm
             },
-            set(changeScreen){
-                this.setChangeScreen(changeScreen)
+            set(earningCadForm){
+                this.$store.commit('setEarningCadForm', earningCadForm)
             }
         }
     }

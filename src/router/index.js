@@ -11,6 +11,7 @@ import NewEarning from '../components/templates/banners/NewEarning'
 import NewExpense from '../components/templates/banners/NewExpense'
 import HomeBar from '../components/templates/app-bars/HomeBar'
 import HomeDrawer from '../components/templates/drawers/HomeDrawer'
+import HomeFooter from '../components/templates/footers/HomeFooter'
 
 Vue.use(Router)
 
@@ -22,7 +23,8 @@ const router = new Router({
       components: {
         default: Home,
         appbar: HomeBar,
-        drawer: HomeDrawer
+        drawer: HomeDrawer,
+        footer: HomeFooter
       }
     },
     {

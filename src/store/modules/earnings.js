@@ -38,6 +38,9 @@ export default {
         },
         deleteEarningPostit({commit}, index){
             commit('deleteEarning', index)
+        },
+        saveEarningFunds({commit}, savedFund){
+            commit('saveFunds', savedFund)
         }
     },
     getters:{

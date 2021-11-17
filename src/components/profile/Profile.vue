@@ -1,5 +1,11 @@
 <template>
-    <div>
+    <v-layout column>
+        <v-container
+            fluid
+            class="pb-10"
+        >
+            <ProfileSparkline></ProfileSparkline>
+        </v-container>
         <v-container
             fluid
         >
@@ -24,17 +30,19 @@
                 ></Expense>
             </v-layout>
         </v-container>
-    </div>
+    </v-layout>
 </template>
 
 <script>
 import Expense from './Expense'
 import Earning from './Earning'
+import ProfileSparkline from '../templates/sparklines/ProfileSparkline.vue'
 
 export default {
     components:{
         Earning,
-        Expense
+        Expense,
+        ProfileSparkline
     },
     computed:{
         profileEarnings:{

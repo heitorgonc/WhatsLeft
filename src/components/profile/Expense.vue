@@ -12,15 +12,15 @@
         >
             <v-list-item three-line>
                 <v-list-item-content>
-                    <div class="text-overline mb-4">Expense: {{expense.date}}</div>
-                    <v-container class="mb-1" v-if="expense.description">
-                        <span class="text-h5">Description: {{expense.description}}</span>
+                    <div class="text-overline mb-4">Expense: {{profileExpense.date}}</div>
+                    <v-container class="mb-1" v-if="profileExpense.description">
+                        <span class="text-h5">Description: {{profileExpense.description}}</span>
                     </v-container>
-                    <v-container class="mb-1" v-if="expense.price">
-                        <span class="text-h5">Price: {{expense.price}}</span>
+                    <v-container class="mb-1" v-if="profileExpense.price">
+                        <span class="text-h5">Price: {{profileExpense.price}}</span>
                     </v-container>
-                    <v-container class="mb-1" v-if="expense.quantity">
-                        <span class="text-h5">Quantity: {{expense.quantity}}</span>
+                    <v-container class="mb-1" v-if="profileExpense.quantity">
+                        <span class="text-h5">Quantity: {{profileExpense.quantity}}</span>
                     </v-container>
                 </v-list-item-content>
             </v-list-item>
@@ -42,16 +42,9 @@
     </v-flex>
 </template>
 <script>
-// import {mapActions} from 'vuex'
 
 export default {
-    props: ['expense'],
-    data() {
-        return {
-            quantity: 0,
-            date: this.date
-        }
-    },
+    props: ['profileExpense'],
     methods:{}
 }
 </script>

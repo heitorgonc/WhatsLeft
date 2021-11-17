@@ -20,20 +20,18 @@
                     single-line
                 >
                     <v-avatar
-                        class="pr-3"
                         slot="icon"
                         color="light-blue darken-3"
                         size="22"
-                        @click.stop="deleteEarning"
                     >
                         <v-icon 
-                            size="x-medium"
+                            size="medium"
                             icon="mdi-currency-usd"
                             color="white"
                         >mdi-currency-usd
                         </v-icon>
                     </v-avatar>
-                    Earning: 
+                    
                     <span v-if="profileEarning.date">{{profileEarning.date}}</span>
                 </v-banner>
                 <v-divider ></v-divider>

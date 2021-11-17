@@ -92,7 +92,8 @@ export default {
                 quantity: this.quantity
             }
             this.$store.dispatch('confirmExpense', confirmedExpense)
-            this.addProfileExpense()
+            this.addProfileExpense(),
+            this.saveFunds()
             this.clear()
         },
         addProfileExpense(){
@@ -105,6 +106,10 @@ export default {
             }
             this.$store.dispatch('addProfileExpense', profileExpense)
         },
+        saveFunds(){
+            const savedFund = this.funds
+            this.$store.dispatch('saveExpenseFunds', savedFund)
+        },
         clear(){
             this.date = new Date().toISOString().slice(0, 10),
             this.quantity = ''
@@ -114,6 +119,13 @@ export default {
             const indexItem = this.i
             this.$store.dispatch('deleteExpensePostit', indexItem)
         },
+    },
+    computed:{
+        funds:{
+            get(){
+                return this.$store.getters.funds
+            }
+        }
     }
 }
 </script>

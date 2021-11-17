@@ -1,6 +1,7 @@
 <template>
     <v-navigation-drawer
         app
+        dark
         v-model="drawer"
         absolute
         temporary

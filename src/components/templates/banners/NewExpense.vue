@@ -1,10 +1,5 @@
 <template>
-    <v-banner
-        app
-        single-line
-        color="red"
-        class="mb-10"
-    >
+    <v-banner single-line>
         <v-avatar
             slot="icon"
             color="red darken-4"
@@ -21,7 +16,7 @@
             <v-btn
                 class="mr-5"
                 text
-                color="white"
+                color="grey lighten-1"
                 @click="expenseCadForm = true"
             >new post-it
             </v-btn>

@@ -93,6 +93,7 @@ export default {
             }
             this.$store.dispatch('confirmEarning', confirmedEarning)
             this.addProfileEarning()
+            this.saveFunds()
             this.clear()
         },
         addProfileEarning(){
@@ -105,6 +106,10 @@ export default {
             }
             this.$store.dispatch('addProfileEarning', profileEarning)
         },
+        saveFunds(){
+            const savedFund = this.funds
+            this.$store.dispatch('saveEarningFunds', savedFund)
+        },
         clear(){
             this.date = new Date().toISOString().slice(0, 10),
             this.quantity = ''
@@ -114,6 +119,11 @@ export default {
             const indexItem = this.i
             this.$store.dispatch('deleteEarningPostit', indexItem)
         },
+    },
+    computed:{
+        funds(){
+            return this.$store.getters.funds
+        }
     }
 }
 </script>

@@ -1,10 +1,5 @@
 <template>
-    <v-banner
-        app
-        single-line
-        color="primary"
-        class="mb-10"
-    >
+    <v-banner single-line>
         <v-avatar
             slot="icon"
             color="light-blue darken-4"
@@ -21,7 +16,7 @@
             <v-btn
                 class="mr-5"
                 text
-                color="white"
+                color="grey lighten-1"
                 @click="earningCadForm = true"
             >new post-it
             </v-btn>

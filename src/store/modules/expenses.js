@@ -39,6 +39,9 @@ export default {
         deleteExpensePostit({commit}, index){
             commit('deleteExpense',index)
         },
+        saveExpenseFunds({commit}, savedFund){
+            commit('saveFunds', savedFund)
+        }
     },
     getters:{
         expenses(state){

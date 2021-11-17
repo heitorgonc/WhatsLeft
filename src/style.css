@@ -1,7 +1,7 @@
 .bannerText{
     font-size: 1.5rem;
     font-weight: 300;
-    color: #fff;
+    color: #ccc;
 }
 #logo{
     cursor: pointer;
@@ -9,8 +9,6 @@
 
 .containerScreen{
     background-color: rgba(0, 0, 0, 0.780);
-    width: 100vw;
-    height: 100vh;
 }
 
 .registerOutdoor{

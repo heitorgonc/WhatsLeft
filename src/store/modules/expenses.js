@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import expenses from '../../data/expenses'
 
 export default {
@@ -41,6 +42,14 @@ export default {
         },
         saveExpenseFunds({commit}, savedFund){
             commit('saveFunds', savedFund)
+        },
+        loadExpenses({commit}){
+            Vue.prototype.$http('expenses.json').then(resp =>{
+                const expenses = resp.data
+                if(expenses){
+                    commit('setExpenses', expenses)
+                }
+            })
         }
     },
     getters:{

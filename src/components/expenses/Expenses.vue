@@ -1,5 +1,6 @@
 <template>
-    <v-layout>
+    <v-layout column>
+        <v-btn @click="saveExpenses">Save Expenses</v-btn>
         <v-layout
             row
             wrap
@@ -36,6 +37,15 @@ export default {
         Expense,
         ExpenseRegister
     },
+    methods:{
+        loadExpenses(){
+            this.$store.dispatch('loadExpenses')
+        },
+        saveExpenses(){
+            const expenses = this.$store.getters.expenses
+            this.$http.put('expenses.json', expenses)
+        }
+    },
     computed:{
         expenses(){
             return this.$store.getters.expenses
@@ -43,7 +53,10 @@ export default {
         expenseCadForm(){
             return this.$store.getters.expenseCadForm
         }
-    }
+    },
+    created() {
+        this.loadExpenses()
+    },
 }
 </script>
 

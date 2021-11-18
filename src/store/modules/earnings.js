@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import earnings from '../../data/earnings'
 
 export default {
@@ -41,6 +42,14 @@ export default {
         },
         saveEarningFunds({commit}, savedFund){
             commit('saveFunds', savedFund)
+        },
+        loadEarnings({ commit }){
+            Vue.prototype.$http('earnings.json').then(resp => {
+                const earnings = resp.data
+                if(earnings){
+                    commit('setEarnings', earnings)
+                }
+            })
         }
     },
     getters:{

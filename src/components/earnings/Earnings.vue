@@ -1,5 +1,6 @@
 <template>
-    <v-layout>
+    <v-layout column>
+        <v-btn @click="saveEarnings">Save Earnings</v-btn>
         <v-layout
             justify-center
             align-center
@@ -36,6 +37,15 @@ export default {
         Earning,
         EarningsRegister
     },
+    methods:{
+        loadEarnings(){
+            this.$store.dispatch('loadEarnings')
+        },
+        saveEarnings(){
+            const earnings = this.$store.getters.earnings
+            this.$http.put('earnings.json', earnings)
+        }
+    },
     computed:{
         earningCadForm(){
             return this.$store.getters.earningCadForm
@@ -43,7 +53,10 @@ export default {
         earnings(){
             return this.$store.getters.earnings
         }
-    }
+    },
+    created(){
+        this.loadEarnings()
+    },
 }
 </script>
 

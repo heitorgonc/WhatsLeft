@@ -66,8 +66,9 @@
                         @click="addEarning"
                         :disabled="
                             value <= 0 ||
-                            description == '' || 
-                            Number.isInteger(description)
+                            description == '' ||
+                            valueMustLess ||
+                            descriptionMustLess
                         "
                     >Create
                     </v-btn>
@@ -98,7 +99,6 @@ export default {
     methods:{
         addEarning(){
             const earning = {
-                id: this.id++,
                 description: this.description,
                 value: this.value
             }
@@ -110,7 +110,7 @@ export default {
             this.description = ''
             this.value = ''
             this.$refs.form.resetValidation()
-        }
+        },
     },
     computed:{
         id:{
@@ -128,6 +128,12 @@ export default {
             set(earningCadForm){
                 this.$store.commit('setEarningCadForm', earningCadForm)
             }
+        },
+        valueMustLess(){
+            return this.value.length > 10
+        },
+        descriptionMustLess(){
+            return this.description.length > 15
         }
     }
 }

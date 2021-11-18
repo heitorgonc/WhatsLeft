@@ -3,7 +3,7 @@ export default {
         funds: 10000,
         profileEarnings: [],
         profileExpenses: [],
-        savedFunds: [],
+        savedFunds: [10000],
     },
     mutations:{
         confirmEarning(state, { quantity, value}){
@@ -23,6 +23,12 @@ export default {
         },
         saveFunds(state, savedFund){
             state.savedFunds.push(savedFund)
+        },
+        setProfileEarnings(state, profileEarnings){
+            state.profileEarnings = profileEarnings
+        },
+        setProfileExpenses(state, profileExpenses){
+            state.profileExpenses = profileExpenses
         }
     },
     getters:{

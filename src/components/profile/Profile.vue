@@ -2,10 +2,11 @@
     <v-layout column>
         <v-container
             fluid
-            class="pb-10"
+            class="pa-8"
         >
             <ProfileSparkline></ProfileSparkline>
         </v-container>
+        <v-divider></v-divider>
         <v-container
             fluid
         >

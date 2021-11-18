@@ -44,7 +44,7 @@
                     v-if="profileEarning.value"
                 >
                     <span class="profileEarningLabel">Value:</span> 
-                    {{profileEarning.value}}
+                    {{profileEarning.value | dollarsign}}
                 </span>
                 <span
                     v-if="profileEarning.quantity"

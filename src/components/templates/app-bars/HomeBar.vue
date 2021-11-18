@@ -23,7 +23,7 @@
             <v-spacer></v-spacer>
             <v-layout align-center>
                 <span class="text-uppercase grey--text text--darken-2">
-                    Remaining: <span class="headerFunds">{{funds}}</span>
+                    Remaining: <span class="headerFunds">{{funds | dollarsign}}</span>
                 </span>
             </v-layout>
             <v-spacer></v-spacer>

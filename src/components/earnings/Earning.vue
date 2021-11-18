@@ -15,7 +15,7 @@
                     justify-center
                 >
                     <span class="postitDescription">{{earning.description}}</span>
-                    <span class="postitValue">({{earning.value}} $)</span>
+                    <span class="postitValue">({{earning.value | dollarsign}})</span>
                 </v-layout>
             </v-card-title>
             <v-card-actions class="close">
@@ -60,7 +60,11 @@
                         class="ml-3 mt-3"
                         text
                         color="success"
-                        :disabled="quantity <= 0 || date == ''"
+                        :disabled="
+                            quantity <= 0 || 
+                            date == '' ||
+                            quantityMustLess
+                        "
                         @click="confirmEarning"
                     >Confirm
                     </v-btn>
@@ -115,14 +119,22 @@ export default {
             this.quantity = ''
             this.$refs.form.resetValidation()
         },
-        deleteEarning(){
+        deleteEarning(earningId){
             const indexItem = this.i
             this.$store.dispatch('deleteEarningPostit', indexItem)
+            this.$http.delete(`/earnings/${earningId}.json`)
         },
+
     },
     computed:{
         funds(){
             return this.$store.getters.funds
+        },
+        quantityMustLess(){
+            return this.quantity.length > 10
+        },
+        earningId(){
+            return this.$store.getters.earningId
         }
     }
 }

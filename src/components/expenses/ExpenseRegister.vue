@@ -66,7 +66,9 @@
                         :disabled="
                             price <= 0 || 
                             description == '' || 
-                            Number.isInteger(description)
+                            Number.isInteger(description) ||
+                            priceMustLess ||
+                            descriptionMustLess
                         "
                     >Create
                     </v-btn>
@@ -109,7 +111,7 @@ export default {
             this.description = ''
             this.price = ''
             this.$refs.form.resetValidation()
-        }
+        },
     },
     computed:{
         id:{
@@ -127,6 +129,12 @@ export default {
             set(expenseCadForm){
                 this.$store.commit('setExpenseCadForm', expenseCadForm)
             }
+        },
+        descriptionMustLess(){
+            return this.description.length > 15
+        },
+        priceMustLess(){
+            return this.price.length > 10
         }
     }
 }

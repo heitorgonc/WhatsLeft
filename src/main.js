@@ -6,6 +6,10 @@ import vuetify from './plugins/vuetify'
 import router from './router/index'
 import store from './store/store'
 
+Vue.filter('dollarsign', value => {
+  return '$ '+ value.toLocaleString()
+})
+
 new Vue({
   vuetify,
   router,

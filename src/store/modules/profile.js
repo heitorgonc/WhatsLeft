@@ -1,9 +1,12 @@
+import Vue from "vue"
+
 export default {
     state: {
-        funds: 10000,
+        funds: 0,
         profileEarnings: [],
         profileExpenses: [],
-        savedFunds: [10000],
+        savedFunds: [0],
+        initFunds: false
     },
     mutations:{
         confirmEarning(state, { quantity, value}){
@@ -12,23 +15,62 @@ export default {
         confirmExpense(state, { quantity, price}){
             state.funds -= price * quantity
         },
-        addProfileExpense(state, profileExpense){
-            state.profileExpenses.push(profileExpense)
-        },
-        addProfileEarning(state, profileEarning){
-            state.profileEarnings.push(profileEarning)
+        setSavedFunds(state, savedFunds){
+            state.savedFunds = savedFunds
         },
         setFunds(state, funds){
             state.funds = funds
-        },
-        saveFunds(state, savedFund){
-            state.savedFunds.push(savedFund)
         },
         setProfileEarnings(state, profileEarnings){
             state.profileEarnings = profileEarnings
         },
         setProfileExpenses(state, profileExpenses){
             state.profileExpenses = profileExpenses
+        },
+        setInitFunds(state, initFunds){
+            state.initFunds = initFunds
+        }
+    },
+    actions:{
+        loadSavedFunds({commit}){
+            Vue.prototype.$http('savedFunds.json').then(resp => {
+                const savedFunds = Object.values(resp.data)
+                if(savedFunds){
+                    commit('setSavedFunds', savedFunds)
+                }
+            })
+        },
+        loadProfileEarnings({commit}){
+            Vue.prototype.$http('profileEarnings.json').then(resp => {
+                const profileEarnings = resp.data
+                if(profileEarnings){
+                    commit('setProfileEarnings', profileEarnings)
+                }
+            })
+        },
+        loadProfileExpenses({commit}){
+            Vue.prototype.$http('profileExpenses.json').then(resp => {
+                const profileExpenses = resp.data
+                if(profileExpenses){
+                    commit('setProfileExpenses', profileExpenses)
+                }
+            })
+        },
+        loadRemaining({commit}){
+            Vue.prototype.$http('remaining.json').then( resp => {
+                const remaining = resp.data
+                if(remaining){
+                    commit('setFunds', remaining)
+                }
+            })
+        },
+        loadInitFunds({commit}){
+            Vue.prototype.$http('initFunds.json').then( resp => {
+                const initFunds = resp.data
+                if(initFunds){
+                    commit('setInitFunds', initFunds)
+                }
+            })
         }
     },
     getters:{
@@ -43,6 +85,9 @@ export default {
         },
         savedFunds(state){
             return state.savedFunds
+        },
+        initFunds(state){
+            return state.initFunds
         }
     }
 }

@@ -20,15 +20,15 @@
             </v-card-title>
             <v-card-actions class="close">
                 <v-avatar
-                    @click.stop="deleteEarning"
+                    @click="deleteExpense"
                     slot="icon"
-                    color="black"
+                    color="white"
                     size="20"
                 >
                     <v-icon 
                         size="small"
                         icon="mdi-close"
-                        color="white"
+                        color="black"
                     >mdi-close
                     </v-icon>
                 </v-avatar>
@@ -76,11 +76,10 @@
 <script>
 
 export default {
-    props: ['expense', 'i'],
+    props: ['expense', 'id'],
     data() {
         return {
             date: new Date().toISOString().slice(0, 10),
-            id: 0,
             quantity: '',
             quantityRules:[
                 v => !!v || 'Quantity is required',
@@ -95,43 +94,54 @@ export default {
                 price: this.expense.price,
                 quantity: this.quantity
             }
-            this.$store.dispatch('confirmExpense', confirmedExpense)
-            this.addProfileExpense(),
-            this.saveFunds()
-            this.clear()
+            this.$store.dispatch('confirmExpense', confirmedExpense).then(
+                () => {
+                    this.addProfileExpense()
+                    this.saveRemaining()
+                    this.saveFunds()
+                    this.clear()
+                }
+            )
         },
         addProfileExpense(){
             const profileExpense = {
-                id: this.id++,
                 description: this.expense.description,
                 price: this.expense.price,
                 date: this.date,
                 quantity: this.quantity
             }
-            this.$store.dispatch('addProfileExpense', profileExpense)
+            this.$http.post('profileExpenses.json', profileExpense)
         },
         saveFunds(){
             const savedFund = this.funds
-            this.$store.dispatch('saveExpenseFunds', savedFund)
+            this.$http.post('savedFunds.json', savedFund)
+        },
+        saveRemaining(){
+            const savedRemaining = this.funds
+            this.$http.put('remaining.json', savedRemaining)
         },
         clear(){
             this.date = new Date().toISOString().slice(0, 10),
             this.quantity = ''
             this.$refs.form.resetValidation()
         },
-        deleteEarning(){
-            const indexItem = this.i
-            this.$store.dispatch('deleteExpensePostit', indexItem)
+        deleteExpense(){
+            this.$http.delete(`/expenses/${this.id}.json`).then(
+                () => {
+                    this.$store.commit('reloadPage')
+                }
+            )
         },
+        
     },
     computed:{
         funds:{
             get(){
                 return this.$store.getters.funds
             },
-            quantityMustLess(){
-                return this.quantity.length > 10
-            }
+        },
+        quantityMustLess(){
+            return this.quantity.length > 10
         }
     }
 }

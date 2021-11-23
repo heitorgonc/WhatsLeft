@@ -75,6 +75,7 @@
                     outlined
                     rounded
                     text
+                    @click="deleteProfileEarning"
                 >
                 Exclude
                 </v-btn>
@@ -85,8 +86,37 @@
 
 <script>
 export default {
-    props: ['profileEarning'],
-    methods:{}
+    props: ['profileEarning', 'id'],
+    methods:{
+        deleteProfileEarning(){
+            this.$http.delete(`/profileEarnings/${this.id}.json`).then(
+                () => {
+                    this.restoreFunds()
+                    this.saveRemaining()
+                    this.saveFund()
+                    this.reloadPage()
+                }
+            )
+        },
+        reloadPage(){
+            this.$store.commit('reloadPage')
+        },
+        restoreFunds(){
+            const funds = this.$store.getters.funds
+            const value = this.profileEarning.value
+            const quantity = this.profileEarning.quantity
+            const restoredFunds = funds - (value * quantity)
+            this.$store.commit('setFunds', restoredFunds)
+        },
+        saveRemaining(){
+            const savedRemaining = this.$store.getters.funds
+            this.$http.put('remaining.json', savedRemaining)
+        },
+        saveFund(){
+            const savedFund = this.$store.getters.funds
+            this.$http.post('savedFunds.json', savedFund)
+        }
+    }
 }
 </script>
 

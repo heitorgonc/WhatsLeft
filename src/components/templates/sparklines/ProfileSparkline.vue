@@ -1,7 +1,7 @@
 <template>
     <v-card
         class="mx-auto text-center"
-        color="transparent"
+        color="green darken"
         dark
         max-width="600"
     >
@@ -11,7 +11,7 @@
                     auto-draw
                     line-width="3"
                     :value="value"
-                    color="grey lighten-1"
+                    color="white darken"
                     height="150"
                     padding="24"
                     stroke-linecap="round"

@@ -20,7 +20,7 @@
             </v-card-title>
             <v-card-actions class="close">
                 <v-avatar
-                    @click.stop="deleteEarning"
+                    @click="deleteEarning"
                     slot="icon"
                     color="black"
                     size="20"
@@ -76,12 +76,11 @@
 <script>
 
 export default {
-    props: ['earning', 'i'],
+    props: ['earning', 'id'],
     data() {
         return {
             date: new Date().toISOString().slice(0, 10),
             quantity: '',
-            id: 0,
             quantityRules:[
                 v => !!v || 'Quantity is required',
                 v => v.length <= 10 || 'Quantity must be less than 10 characters',
@@ -95,36 +94,46 @@ export default {
                 quantity: this.quantity, 
                 value: this.earning.value
             }
-            this.$store.dispatch('confirmEarning', confirmedEarning)
-            this.addProfileEarning()
-            this.saveFunds()
-            this.clear()
+            this.$store.dispatch('confirmEarning', confirmedEarning).then(
+                () =>{
+                    this.addProfileEarning()
+                    this.saveRemaining()
+                    this.saveFunds()
+                    this.clear()
+                }
+            )
+            
         },
         addProfileEarning(){
             const profileEarning = {
-                id: this.id++,
                 description: this.earning.description,
                 value: this.earning.value,
                 date: this.date,
                 quantity: this.quantity
             }
-            this.$store.dispatch('addProfileEarning', profileEarning)
+            this.$http.post('profileEarnings.json', profileEarning)
         },
         saveFunds(){
             const savedFund = this.funds
-            this.$store.dispatch('saveEarningFunds', savedFund)
+            this.$http.post('savedFunds.json', savedFund)
+        },
+        saveRemaining(){
+            const savedRemaining = this.funds
+            this.$http.put('remaining.json', savedRemaining)
         },
         clear(){
             this.date = new Date().toISOString().slice(0, 10),
             this.quantity = ''
             this.$refs.form.resetValidation()
         },
-        deleteEarning(earningId){
-            const indexItem = this.i
-            this.$store.dispatch('deleteEarningPostit', indexItem)
-            this.$http.delete(`/earnings/${earningId}.json`)
+        deleteEarning(){
+            this.$http.delete(`/earnings/${this.id}.json`).then(
+                () => {
+                    this.$store.commit('realoadPage')
+                }
+            )
         },
-
+        
     },
     computed:{
         funds(){
@@ -132,9 +141,6 @@ export default {
         },
         quantityMustLess(){
             return this.quantity.length > 10
-        },
-        earningId(){
-            return this.$store.getters.earningId
         }
     }
 }

@@ -19,12 +19,18 @@
 .word1{
     color: #fff;
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 .word2{
-    font-weight: 300;
+    font-weight: 400;
     padding-left: 5px;
-    color: #1976D2;
+    color: #fff;
+}
+.outdoor1{
+    font-size: 2rem;
+    color: rgb(160, 160, 160);
+    text-transform: uppercase;
+    font-weight: 300;
 }
 .headerFunds{
     color: #117c09;
@@ -59,4 +65,21 @@
     font-size: 1rem;
     font-weight: 600;
     padding-right: 2px;
+}
+
+@keyframes slide-in{
+    from { transform: translateY(-30px); opacity: 0; }
+    to {transform: translateY(0px); opacity: 1; }
+}
+
+@keyframes slide-out {
+    from { transform: translateY(0px); opacity: 1; }
+    to {transform: translateY(-30px); opacity: 0; }
+}
+
+.slide-enter-active{
+    animation: slide-in 0.3s ease;
+}
+.slide-leave-active{
+    animation: slide-out 0.3s ease;
 }

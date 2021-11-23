@@ -35,6 +35,11 @@
 
 <script>
 export default {
+    methods:{
+        loadRemaining(){
+            this.$store.dispatch('loadRemaining')
+        }
+    },
     computed:{
         funds(){
             return this.$store.getters.funds
@@ -47,6 +52,9 @@ export default {
                 this.$store.commit('setDrawer', drawer)
             }
         },
+    },
+    created(){
+        this.loadRemaining()
     }
 }
 </script>

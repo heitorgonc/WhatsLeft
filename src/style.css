@@ -32,6 +32,9 @@
     text-transform: uppercase;
     font-weight: 300;
 }
+.link{
+    text-decoration: none;
+}
 .headerFunds{
     color: #117c09;
     font-size: 1.5;

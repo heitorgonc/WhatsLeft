@@ -1,10 +1,12 @@
 <template>
-    <v-layout column>
-        <v-btn @click="saveEarnings">Save Earnings</v-btn>
-        <transition name="slide" mode="out-in">
-            <router-view></router-view>
-        </transition>
-    </v-layout>
+    <v-container fluid>
+        <v-layout column>
+            <router-view name="help"></router-view>
+            <transition name="slide" mode="out-in">
+                <router-view></router-view>
+            </transition>
+        </v-layout>
+    </v-container>
 </template>
 
 <script>
@@ -13,19 +15,18 @@ export default {
     methods:{
         loadEarnings(){
             this.$store.dispatch('loadEarnings')
-        },
-        saveEarnings(){
-            const earnings = this.$store.getters.earnings
-            this.$http.put('earnings.json', earnings)
-        },
-        reloadPage(){
-            this.$store.commit('reloadPage')
         }
     },
     created(){
         this.loadEarnings()
-        
     },
+    computed:{
+        dialog:{
+            get(){
+                return this.$store.getters.dialog
+            }
+        }
+    }
 }
 </script>
 

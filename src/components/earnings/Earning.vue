@@ -9,7 +9,7 @@
             rounded
             class="blue darken-3 white--text"
         >
-            <v-card-title class="headline">
+            <v-card-title>
                 <v-layout 
                     align-center 
                     justify-center
@@ -129,7 +129,7 @@ export default {
         deleteEarning(){
             this.$http.delete(`/earnings/${this.id}.json`).then(
                 () => {
-                    this.$store.commit('realoadPage')
+                    this.$store.commit('reloadPage')
                 }
             )
         },

@@ -1,10 +1,5 @@
 <template>
-    <v-flex 
-        class="pr-5 pt-5" 
-        xs12 
-        md6 
-        lg4
-    >
+    <v-flex class="profilePostit">
         <v-card 
             class="mx-auto"
             max-width="344"
@@ -12,48 +7,52 @@
         >
             <v-list-item three-line>
                 <v-list-item-content>
-                    <div class="text-overline mb-4">
+                    <div class="mb-4">
                         <v-layout
                             align-center
                             justify-center
+                            class="profilePostitTitle"
                         >
                             <v-avatar
                                 slot="icon"
                                 color="red darken-3"
-                                size="22"
+                                size="30"
                                 class="mr-5"
                             >
                                 <v-icon 
-                                    size="medium"
+                                    size="x-medium"
                                     icon="mdi-currency-usd"
                                     color="white"
                                 >mdi-currency-usd
                                 </v-icon>
                             </v-avatar>
-                            Expense: {{profileExpense.date}}
+                            Expense : {{profileExpense.date}}
                         </v-layout>
-                        
                     </div>
+                    <v-divider></v-divider>
                     <v-layout 
                         align-center
                         justify-center
                     >
-                        <div
-                            v-if="profileExpense.description"
-                            class="mr-3"
-                        >
-                            {{profileExpense.description}}
-                        </div> 
-                        <div
-                            v-if="profileExpense.price"
-                            class="mr-3"
-                        >
-                            {{profileExpense.price | dollarsign}}
-                        </div>
-                        <div 
-                            v-if="profileExpense.quantity"
-                        >
-                            {{profileExpense.quantity}}<small>x</small>
+                        <div class="profilePostitTextField">
+                            <div
+                                v-if="profileExpense.description"
+                                class="profilePostitText"
+                            >
+                                <span class="profilePostitLabel">Description :</span> {{profileExpense.description}}
+                            </div> 
+                            <div
+                                v-if="profileExpense.price"
+                                class="profilePostitText"
+                            >
+                                <span class="profilePostitLabel">Price :</span> {{profileExpense.price | dollarsign}}
+                            </div>
+                            <div 
+                                v-if="profileExpense.quantity"
+                                class="profilePostitText"
+                            >
+                                <span class="profilePostitLabel">Quantity :</span> {{profileExpense.quantity}}<small>x</small>
+                            </div>
                         </div>
                     </v-layout>
                 </v-list-item-content>

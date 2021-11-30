@@ -1,12 +1,12 @@
 <template>
     <v-card
-        class="mx-auto text-center"
-        color="green darken"
+        class="mx-auto text-center mb-8"
+        color="transparent"
         dark
-        max-width="600"
+        max-width="800"
     >
         <v-card-text>
-            <v-sheet color="rgba(0, 0, 0, .15)">
+            <v-sheet color="rgba(0, 0, 0, .35)">
                 <v-sparkline
                     auto-draw
                     line-width="3"
@@ -28,14 +28,19 @@
 
 <script>
 export default {
-    computed:{
-        value:{
-            get(){
-                return this.$store.getters.savedFunds
-            }
+    methods:{
+        loadSavedFunds(){
+            return this.$store.dispatch('loadSavedFunds')
         }
-    }
-
+    },
+    computed:{
+        value(){
+            return this.$store.getters.savedFunds
+        }
+    },
+    created() {
+        this.loadSavedFunds()
+    },
 }
 </script>
 

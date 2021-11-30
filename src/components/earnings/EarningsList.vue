@@ -1,17 +1,17 @@
 <template>
     <v-layout      
-            row 
-            wrap
-            class="ma-5"
-        >
-            <Earning 
-                v-for="(earning, id) in earnings" 
+        row 
+        wrap
+        class="ma-5"
+    >
+        <Earning 
+            v-for="(earning, id) in earnings" 
                 :key="id"
                 :earning="earning"
                 :id="id"
             >
-            </Earning>
-        </v-layout>
+        </Earning>
+    </v-layout>
 </template>
 
 <script>

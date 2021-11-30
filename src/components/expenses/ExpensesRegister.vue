@@ -4,14 +4,14 @@
         justify-center
     >
         <v-flex>
-            <v-card class="red darken-3">
-                <v-card-title class="headline">
+            <v-card class="red darken-3" width="400">
+                <v-card-title>
                     <v-layout 
                         align-center
                         justify-center
                     >
-                        <span class="word1">New</span>
-                        <span class="word2">Post-it</span>
+                        <span class="registerTitle">New</span>
+                        <span class="registerTitle2">Post-it</span>
                     </v-layout>
                 </v-card-title>
                 <v-card-actions class="close">
@@ -36,6 +36,7 @@
                         <v-form ref="form">
                             <v-col cols="12">
                                 <v-text-field 
+                                    type="text"
                                     v-model="description" 
                                     :counter="15"
                                     :rules="descriptionRules"
@@ -84,8 +85,7 @@
                             @click="addExpense"
                             :disabled="
                                 price <= 0 || 
-                                description == '' || 
-                                Number.isInteger(description) ||
+                                description == '' ||
                                 priceMustLess ||
                                 descriptionMustLess
                             "
@@ -154,10 +154,10 @@ export default {
         },
         dialog:{
             get(){
-                return this.$store.getters.expensesDialog
+                return this.$store.getters.dialog
             },
             set(dialog){
-                this.$store.commit('setExpensesDialog', dialog)
+                this.$store.commit('setDialog', dialog)
             }
         }
     }

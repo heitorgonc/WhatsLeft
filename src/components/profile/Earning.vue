@@ -1,84 +1,87 @@
 <template>
-    <v-flex 
-        class="pr-5 pt-5" 
-        xs12 
-        md6 
-        lg4
-    >
+    <v-flex class="profilePostit">
         <v-card 
             class="mx-auto"
             max-width="344"
             outlined
         >
-            <v-layout 
-                justify-center 
-                align-center 
-                column
-            >
-                <v-banner 
-                    class=" text-overline mt-3"
-                    single-line
-                >
-                    <v-avatar
-                        slot="icon"
-                        color="light-blue darken-3"
-                        size="22"
+            <v-list-item three-line>
+                <v-list-item-content>
+                    <div class="mb-4">
+                        <v-layout 
+                            align-center
+                            justify-center
+                            class="profilePostitTitle"
+                        >
+                            <v-avatar
+                                slot="icon"
+                                color="blue darken-3"
+                                size="30"
+                                class="mr-5"
+                            >
+                                <v-icon 
+                                    size="x-medium"
+                                    icon="mdi-currency-usd"
+                                    color="white"
+                                >mdi-currency-usd
+                                </v-icon>
+                            </v-avatar>
+                            Earning : {{profileEarning.date}}
+                        </v-layout>
+                    </div>
+                    <v-divider></v-divider>
+                    <v-layout
+                        align-center
+                        justify-center
                     >
-                        <v-icon 
-                            size="medium"
-                            icon="mdi-currency-usd"
-                            color="white"
-                        >mdi-currency-usd
-                        </v-icon>
-                    </v-avatar>
-                    
-                    <span v-if="profileEarning.date">{{profileEarning.date}}</span>
-                </v-banner>
-                <v-divider ></v-divider>
-                <span
-                    v-if="profileEarning.description"
-                    class="profileEarningTitle"
-                >{{profileEarning.description}}
-                </span>
-                <span
-                    v-if="profileEarning.value"
-                >
-                    <span class="profileEarningLabel">Value:</span> 
-                    {{profileEarning.value | dollarsign}}
-                </span>
-                <span
-                    v-if="profileEarning.quantity"
-                >
-                    <span class="profileEarningLabel">Quantity:</span>
-                    {{profileEarning.quantity}}
-                </span>
-                <span
-                    v-if="profileEarning.value"
-                >
-                    <span class="profileEarningLabel">Total:</span>
-                    {{profileEarning.quantity * profileEarning.value}}
-                </span>
-            </v-layout>
-            <v-divider class="pb-2"></v-divider>
+                        <div class="profilePostitTextFields">
+                            <div
+                                v-if="profileEarning.description"
+                                class="profilePostitText"
+                            >
+                                <span class="profilePostitLabel">Description :</span> {{profileEarning.description}}
+                            </div> 
+                            <div
+                                v-if="profileEarning.value"
+                                class="profilePostitText"
+                            >
+                                <span class="profilePostitLabel">Value :</span> {{profileEarning.value | dollarsign}}
+                            </div>
+                            <div 
+                                v-if="profileEarning.quantity"
+                                class="profilePostitText"
+                            >
+                                <span class="profilePostitLabel">Quantity :</span>{{profileEarning.quantity}}<small>x</small>
+                            </div>
+                        </div>
+                    </v-layout>
+                </v-list-item-content>
+            </v-list-item>
+            <v-divider></v-divider>
             <v-card-actions>
-                <v-btn
-                    class="ml-5"
-                    outlined
-                    rounded
-                    text
+                <v-layout
+                    align-center
+                    justify-center
                 >
-                Edit
-                </v-btn>
-                <v-spacer></v-spacer>
-                <v-btn
-                    class="mr-5"
-                    outlined
-                    rounded
-                    text
-                    @click="deleteProfileEarning"
-                >
-                Exclude
-                </v-btn>
+                    <v-btn
+                        class="ml-5"
+                        outlined
+                        rounded
+                        text
+                        small
+                    >Edit
+                    </v-btn>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                        class="mr-5"
+                        outlined
+                        rounded
+                        text
+                        @click="deleteProfileEarning"
+                        small
+                    >Exclude
+                    </v-btn>
+                </v-layout>
             </v-card-actions>
         </v-card>
     </v-flex>

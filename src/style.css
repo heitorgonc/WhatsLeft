@@ -1,44 +1,93 @@
-.bannerText{
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: #ccc;
-}
-#logo{
-    cursor: pointer;
-}
-
-.containerScreen{
-    background-color: rgba(0, 0, 0, 0.780);
-}
-
-.registerOutdoor{
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 300;
-}
-.word1{
-    color: #fff;
-    font-weight: 400;
-    font-size: 2rem;
-}
-.word2{
-    font-weight: 400;
-    padding-left: 5px;
-    color: #fff;
-}
-.outdoor1{
-    font-size: 2rem;
-    color: rgb(160, 160, 160);
-    text-transform: uppercase;
-    font-weight: 300;
+/* GLOBAL */
+.helpAvatar{
+    background: rgb(9,77,143);
+    background: linear-gradient(180deg, rgba(9,77,143,1) 0%, rgba(58,118,185,1) 35%, rgba(18,75,177,1) 100%);
 }
 .link{
+    text-transform: uppercase;
     text-decoration: none;
+    color: #1d7e66 !important;
 }
-.headerFunds{
-    color: #117c09;
-    font-size: 1.5;
+.link:hover{
+    text-decoration: underline
+}
+
+
+/* PROFILE PAGE */
+.profileText{
+    font-family: 'Rubik';
+    text-transform: uppercase;
+    color: #ccc;
+    font-weight: 400;
+    font-size: 3rem;
+}
+.funds{
+    color: #1d7e66;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: rgb(0, 0, 0, 0.44);
+}
+.profilePostitScreen{
+    background-color: rgba(0, 0, 0, 0.44);
+}
+.profilePostit{
+    font-family: 'Rubik';
+    margin: 25px
+}
+.profilePostitTitle{
+    color: rgb(75, 75, 75);
+}
+.profilePostitTextFields{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.profilePostitText{
+    margin-top: 5px;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: rgb(75, 75, 75);
+}
+.profilePostitLabel{
+    font-size: 1rem;
+    color: #aaa !important;
+}
+.openingProfile{
+    font-family: 'Rubik';
+    color: #ccc;
+    font-weight: 400;
+    font-size: 2rem;
+}
+.profileScreen{
+    width: 100vw;
+    height: 100vh;
+}
+.openingLayout{
+    background-color: #fff;
+}
+.profilePostitTitle{
+    text-transform: uppercase;
+    font-weight: 400;
+}
+.profilePostitLabel{
+    font-size: 1rem;
     font-weight: 600;
+    padding-right: 2px;
+}
+
+
+/* EARNINGS AND EXPENSES PAGE */
+.registerTitle{
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 400;
+    margin-right: 5px;
+}
+.registerTitle2{
+    font-size: 2rem;
+    color: rgb(224, 224, 224);
+    font-weight: 300;
 }
 .postitDescription{
     font-size: 1.5rem;
@@ -48,7 +97,6 @@
 .postitValue{
     font-size: 1.1rem;
 }
-
 .close{
     position: absolute;
     right: 10px;
@@ -56,30 +104,59 @@
     justify-content: center;
     cursor: pointer;
 }
-
-.profileEarningTitle{
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    font-weight: 400;
-    padding-bottom: 2px;
+.helpLi{
+    color: rgb(153, 153, 153);
+    font-family: 'Rubik';
+    font-size: 1.2rem;
+}
+.helpUl{
+    text-decoration: none;
 }
 
-.profileEarningLabel{
-    font-size: 1rem;
+
+/* HOME-BAR APP BAR */
+#logo{
+    cursor: pointer;
+}
+.headerFunds{
+    color: #117c09;
+    font-size: 1.5;
     font-weight: 600;
-    padding-right: 2px;
 }
 
+
+/* POST-IT REGISTER BANNER */
+.banner{
+    background-color: rgba(0, 0, 0, .24)
+}
+.bannerText{
+    font-size: 2rem;
+    font-weight: 400;
+    color: rgb(221, 221, 221);
+    font-family: 'Rubik';
+}
+.bannerAvatar{
+    background: rgb(9,77,143);
+    background: linear-gradient(180deg, rgba(9,77,143,1) 0%, rgba(58,185,117,1) 35%, rgba(18,75,177,1) 100%);
+}
+
+
+/* APP */
+.gradientScreen{
+    background: rgb(45,45,79);
+    background: linear-gradient(90deg, rgba(45,45,79,1) 0%, rgba(25,141,210,1) 35%, rgba(18,117,68,1) 100%);
+}
+
+
+/* ANIMATIONS */
 @keyframes slide-in{
     from { transform: translateY(-30px); opacity: 0; }
     to {transform: translateY(0px); opacity: 1; }
 }
-
 @keyframes slide-out {
     from { transform: translateY(0px); opacity: 1; }
     to {transform: translateY(-30px); opacity: 0; }
 }
-
 .slide-enter-active{
     animation: slide-in 0.3s ease;
 }

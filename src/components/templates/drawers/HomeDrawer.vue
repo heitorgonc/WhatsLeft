@@ -5,6 +5,7 @@
         v-model="drawer"
         absolute
         temporary
+        class="drawer"
     >
         <v-list
             nav

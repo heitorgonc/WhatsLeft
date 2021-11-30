@@ -4,14 +4,14 @@
         align-center
     >
         <v-flex>
-            <v-card class="blue darken-3">
-                <v-card-title class="headline">
+            <v-card class="blue darken-3" width="400">
+                <v-card-title>
                     <v-layout 
                         align-center 
                         justify-center
                     >
-                        <span class="word1">New</span>
-                        <span class="word2">Post-it</span>
+                        <span class="registerTitle">New</span>
+                        <span class="registerTitle2">Post-it</span>
                     </v-layout>
                 </v-card-title>
                 <v-card-actions class="close">
@@ -154,10 +154,10 @@ export default {
         },
         dialog:{
             get(){
-                return this.$store.getters.earningsDialog
+                return this.$store.getters.dialog
             },
             set(dialog){
-                this.$store.commit('setEarningsDialog', dialog)
+                this.$store.commit('setDialog', dialog)
             }
         }
     },

@@ -9,7 +9,7 @@
             rounded
             class="red darken-3 white--text"
         >
-            <v-card-title class="headline">
+            <v-card-title>
                 <v-layout
                     align-center
                     justify-center
@@ -26,7 +26,7 @@
                     size="20"
                 >
                     <v-icon 
-                        size="small"
+                        size="medium"
                         icon="mdi-close"
                         color="black"
                     >mdi-close
@@ -132,13 +132,10 @@ export default {
                 }
             )
         },
-        
     },
     computed:{
-        funds:{
-            get(){
-                return this.$store.getters.funds
-            },
+        funds(){
+            return this.$store.getters.funds
         },
         quantityMustLess(){
             return this.quantity.length > 10

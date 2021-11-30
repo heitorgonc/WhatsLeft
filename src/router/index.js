@@ -1,20 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../components/Home'
-import EarningsHome from '../components/earnings/EarningsHome'
-import EarningsList from '../components/earnings/EarningsList'
-import EarningsRegister from '../components/earnings/EarningsRegister'
-import ExpensesHome from '../components/expenses/ExpensesHome'
-import ExpensesList from '../components/expenses/ExpensesList'
-import ExpensesRegister from '../components/expenses/ExpensesRegister'
-import Profile from '../components/profile/Profile'
-import WayExpenses from '../components/templates/ways/WayExpenses'
-import WayEarnings from '../components/templates/ways/WayEarnings'
-import WayProfile from '../components/templates/ways/WayProfile'
-import PostitRegister from '../components/templates/banners/PostitRegister'
-import HomeBar from '../components/templates/app-bars/HomeBar'
-import HomeDrawer from '../components/templates/drawers/HomeDrawer'
-import HomeFooter from '../components/templates/footers/HomeFooter'
+const HomePage = () => import('../components/Home')
+const EarningsHome = () => import('../components/earnings/EarningsHome')
+const EarningsList = () => import('../components/earnings/EarningsList')
+const EarningsRegister = () => import('../components/earnings/EarningsRegister')
+const ExpensesHome = () => import('../components/expenses/ExpensesHome')
+const ExpensesList = () => import('../components/expenses/ExpensesList')
+const ExpensesRegister = () => import('../components/expenses/ExpensesRegister')
+const Profile = () => import('../components/profile/Profile')
+const WayExpenses = () => import('../components/templates/ways/WayExpenses')
+const WayEarnings = () => import('../components/templates/ways/WayEarnings')
+const WayProfile = () => import('../components/templates/ways/WayProfile')
+const PostitRegister = () => import('../components/templates/banners/PostitRegister')
+const HomeBar = () => import('../components/templates/app-bars/HomeBar')
+const HomeDrawer = () => import('../components/templates/drawers/HomeDrawer')
+const HomeFooter = () => import('../components/templates/footers/HomeFooter')
+const HelpDialog = () => import('../components/templates/dialogs/HelpDialog')
+const HelpPostit = () => import('../components/templates/dialogs/dialogTemplates/HelpPostit')
+const HelpProfile = () => import('../components/templates/dialogs/dialogTemplates/HelpProfile')
 
 Vue.use(Router)
 
@@ -24,7 +27,7 @@ const router = new Router({
     {
       path: '/', 
       components: {
-        default: Home,
+        default: HomePage,
         appbar: HomeBar,
         drawer: HomeDrawer,
         footer: HomeFooter
@@ -43,8 +46,17 @@ const router = new Router({
       children:[
         {
           path: '',
-          component: EarningsList
-        }
+          components: {
+            default: EarningsList,
+            help: HelpDialog,
+          },
+          children:[
+            {
+              path: '',
+              component: HelpPostit
+            }
+          ]
+        },
       ]
     },
     {
@@ -60,7 +72,16 @@ const router = new Router({
       children:[
         {
           path: '',
-          component: ExpensesList
+          components:{
+            default: ExpensesList,
+            help: HelpDialog
+          },
+          children:[
+            {
+              path: '',
+              component: HelpPostit
+            }
+          ]
         }
       ]
     },
@@ -71,7 +92,21 @@ const router = new Router({
         way: WayProfile,
         appbar: HomeBar,
         drawer: HomeDrawer
-      }
+      },
+      children:[
+        {
+          path:'',
+          components:{
+            help: HelpDialog,
+          },
+          children: [
+            {
+              path: '',
+              component: HelpProfile
+            }
+          ]
+        }
+      ]
     }
   ]
 })

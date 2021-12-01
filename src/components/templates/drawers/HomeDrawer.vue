@@ -1,11 +1,9 @@
 <template>
     <v-navigation-drawer
         app
-        dark
-        v-model="drawer"
-        absolute
         temporary
         class="drawer"
+        v-model="drawer"
     >
         <v-list
             nav

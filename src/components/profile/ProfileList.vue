@@ -3,20 +3,6 @@
         class="pa-8"
         column
     >
-        <router-view name="help"></router-view>
-        <v-layout 
-            align-center
-            justify-center
-        >
-            <span class="profileText pr-5">
-                Remaining :
-            </span>
-            <span 
-                class="profileText funds pr-3 pl-3" 
-                elevation
-            >{{funds | dollarsign}}
-            </span>
-        </v-layout>
         <v-container 
             rounded 
             class="mt-10 pa-20"

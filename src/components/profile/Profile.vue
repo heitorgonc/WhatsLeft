@@ -31,10 +31,26 @@
                     color="rgba(0, 0, 0, 0.47)"
                     v-else
                 >
-                    <v-layout class="pa-8" column>
+                    <v-container fluid>
+                        <router-view name="help"></router-view>
+                    </v-container>
+                    <v-layout 
+                        align-center
+                        justify-center
+                    >
+                        <span class="profileText pr-5">
+                            Remaining :
+                        </span>
+                        <span 
+                            class="profileText funds pr-3 pl-3" 
+                            elevation
+                        >{{funds | dollarsign}}
+                        </span>
+                    </v-layout>
+                    <ProfileSparkline class="mt-10"></ProfileSparkline>
+                    <v-layout class="pa-2" column>
                         <ProfileList></ProfileList>
                     </v-layout>
-                    <ProfileSparkline></ProfileSparkline>
                 </v-sheet>
             </template>
         </v-dialog>

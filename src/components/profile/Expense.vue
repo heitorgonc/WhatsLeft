@@ -64,21 +64,13 @@
                     justify-center
                 >
                     <v-btn
-                        class="ml-5"
-                        outlined
-                        rounded
-                        text
-                        small
-                    >Edit
-                    </v-btn>
-                    <v-spacer></v-spacer>
-                    <v-btn
                         class="mr-5"
                         outlined
                         rounded
                         text
                         @click="deleteProfileExpense"
                         small
+                        color="error"
                     >Exclude
                     </v-btn>
                 </v-layout>

@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <v-layout class="gradientScreen">
-      <h1>BEM VINDO</h1>
       <router-view name="drawer"></router-view>
       <router-view name="appbar">
         <template v-slot:way>

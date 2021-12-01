@@ -6,7 +6,6 @@ export default {
         profileEarnings: [],
         profileExpenses: [],
         savedFunds: [0],
-        // initFunds: false,
         dialog: false
     },
     mutations:{
@@ -28,9 +27,6 @@ export default {
         setProfileExpenses(state, profileExpenses){
             state.profileExpenses = profileExpenses
         },
-        // setInitFunds(state, initFunds){
-        //     state.initFunds = initFunds
-        // },
         setDialog(state, dialog){
             state.dialog = dialog
         }
@@ -68,14 +64,6 @@ export default {
                 }
             })
         },
-        // loadInitFunds({commit}){
-        //     Vue.prototype.$http('initFunds.json').then( resp => {
-        //         const initFunds = resp.data
-        //         if(initFunds){
-        //             commit('setInitFunds', initFunds)
-        //         }
-        //     })
-        // }
     },
     getters:{
         profileExpenses(state){
@@ -90,9 +78,6 @@ export default {
         savedFunds(state){
             return state.savedFunds
         },
-        // initFunds(state){
-        //     return state.initFunds
-        // },
         dialog(state){
             return state.dialog
         }

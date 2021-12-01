@@ -1,16 +1,23 @@
 {
+  "postinstall": "npm run build",
+  "start": "node index.js",
   "name": "whatsleft",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "dev": "webpack-dev-server",
+    "production": "'process.env.NODE_ENV': JSON.stringify('production')",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "-": "0.0.1",
     "@mdi/js": "^6.4.95",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "express": "^4.17.1",
+    "save": "^2.4.0",
     "vue": "^2.6.11",
     "vue-axios": "^3.4.0",
     "vue-router": "^3.2.0",

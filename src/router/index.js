@@ -25,7 +25,7 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
-      path: '/', 
+      path: 'https://whtsleft.netlify.app/', 
       components: {
         default: HomePage,
         appbar: HomeBar,

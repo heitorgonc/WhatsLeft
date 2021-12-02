@@ -6,24 +6,24 @@
         >
             <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
             <v-toolbar-title 
-                id="logo" 
-                class="headline text-uppercase mr-4"
+                class="headline text-uppercase mr-4 homebar-logo"
             >
-                <v-btn 
-                    plain 
-                    to="/"
-                    x-large
+                <v-card
+                    color="transparent"
+                    flat
                 >
-                    <span>What's</span>
-                    <span class="font-weight-light">left</span>
-                </v-btn>
+                    <router-link to="/" class="app-bar-link">
+                        <span class="text-logo">What's</span>
+                        <span class="font-weight-light text-logo1">left</span>
+                    </router-link>
+                </v-card>
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-layout><slot name="way"></slot></v-layout>
             <v-spacer></v-spacer>
-            <v-layout align-center>
+            <v-layout align-center class="app-funds">
                 <span class="text-uppercase grey--text text--darken-2">
-                    Remaining: <span class="headerFunds">{{funds | dollarsign}}</span>
+                    Remaining: <span class="homebar-funds">{{funds | dollarsign}}</span>
                 </span>
             </v-layout>
             <v-spacer></v-spacer>

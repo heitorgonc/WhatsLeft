@@ -7,14 +7,13 @@
             <OpeningBalance></OpeningBalance>
             <template v-slot:activator="{ on, attrs }">
                 <v-sheet
-                    class="profileScreen"
                     color="rgba(0, 0, 0, 0.47)"
                     v-if="noFunds"
                 >
                     <v-layout
                         align-center
                         justify-center
-                        class="openingLayout"
+                        class="profile-opening-layout"
                     >
                         <v-btn
                             class="mt-5 mb-5"
@@ -38,11 +37,11 @@
                         align-center
                         justify-center
                     >
-                        <span class="profileText pr-5">
+                        <span class="profile-span pr-5">
                             Remaining :
                         </span>
                         <span 
-                            class="profileText funds pr-3 pl-3" 
+                            class="profile-span funds pr-3 pl-3" 
                             elevation
                         >{{funds | dollarsign}}
                         </span>

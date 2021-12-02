@@ -2,38 +2,47 @@
     <v-layout
         class="pa-8"
         column
+        align-center
+        justify-center
     >
-        <v-container 
-            rounded 
-            class="mt-10 pa-20"
-            
-        >
-            <v-layout 
-                row
-                wrap
-                class="pb-2"
-            >
-                <Earning
-                    v-for="(profileEarning, id) in profileEarnings" 
+        <template>
+            <v-carousel v-model="modelearnings" rounded>
+                <v-carousel-item
+                    v-for="(profileEarning, id) in profileEarnings"
                     :key="id"
-                    :profileEarning="profileEarning"
-                    :id="id"
-                ></Earning>
-            </v-layout>
-            <v-divider dark></v-divider>
-            <v-layout
-                row
-                wrap
-                class="pt-2"
-            >
-                <Expense
-                    v-for="(profileExpense, id) in profileExpenses" 
+                >
+                    <v-row
+                        class="fill-height"
+                        align="center"
+                        justify="center"
+                    >
+                        <Earning
+                            :profileEarning="profileEarning"
+                            :id="id"
+                        ></Earning>
+                    </v-row>
+                </v-carousel-item>
+            </v-carousel>
+        </template>
+        <template>
+            <v-carousel v-model="modelexpenses">
+                <v-carousel-item
+                    v-for="(profileExpense, id) in profileExpenses"
                     :key="id"
-                    :profileExpense="profileExpense"
-                    :id="id"
-                ></Expense>
-            </v-layout>
-        </v-container>
+                >
+                    <v-row
+                        class="fill-height"
+                        align="center"
+                        justify="center"
+                    >
+                        <Expense
+                            :profileExpense="profileExpense"
+                            :id="id"
+                        ></Expense>
+                    </v-row>
+                </v-carousel-item>
+            </v-carousel>
+        </template>
     </v-layout>
 </template>
 
@@ -42,6 +51,12 @@ import Expense from './Expense'
 import Earning from './Earning'
 
 export default {
+    data(){
+        return{
+            modelearnings: 0,
+            modelexpenses: 0,
+        }
+    },
     components:{
         Earning,
         Expense,

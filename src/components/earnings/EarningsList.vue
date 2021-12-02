@@ -6,10 +6,10 @@
     >
         <Earning 
             v-for="(earning, id) in earnings" 
-                :key="id"
-                :earning="earning"
-                :id="id"
-            >
+            :key="id"
+            :earning="earning"
+            :id="id"
+        >
         </Earning>
     </v-layout>
 </template>

@@ -8,7 +8,7 @@
             justify-center
         >
             <v-card-title>
-                <span class="openingProfile pr-5">Opening Balance:</span>
+                <span class="opening-balance-span pr-5">Opening Balance:</span>
             </v-card-title>
             <v-card-text>
                 <v-form ref="form">

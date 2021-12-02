@@ -3,25 +3,23 @@
         single-line
         align-center
     >
-        <v-btn 
-            plain
-            small
+        <router-link 
+            class="way-link"
             to="/"
         >Home
-        </v-btn>
+        </router-link>
         <v-icon 
+            class="way-divider"
             small
             icon="mdi-arrow-right"
             color="black"
         >mdi-arrow-right
         </v-icon>
-        <v-btn 
-            color="primary"
-            small
-            plain
+        <router-link
+            class="way-link way-active"
             to="/profile"
         >Profile
-        </v-btn>
+        </router-link>
     </v-banner>
 </template>
 

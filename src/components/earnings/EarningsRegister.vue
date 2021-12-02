@@ -10,11 +10,11 @@
                         align-center 
                         justify-center
                     >
-                        <span class="registerTitle">New</span>
-                        <span class="registerTitle2">Post-it</span>
+                        <span class="postit-register-span">New</span>
+                        <span class="postit-register-span1">Post-it</span>
                     </v-layout>
                 </v-card-title>
-                <v-card-actions class="close">
+                <v-card-actions class="postit-close">
                     <v-avatar
                         slot="icon"
                         color="black"

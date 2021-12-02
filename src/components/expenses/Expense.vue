@@ -14,11 +14,11 @@
                     align-center
                     justify-center
                 >
-                    <span class="postitDescription">{{expense.description}}</span>
-                    <span class="postitValue">({{expense.price | dollarsign}})</span>
+                    <span class="postit-description">{{expense.description}}</span>
+                    <span class="postit-value">({{expense.price | dollarsign}})</span>
                 </v-layout>
             </v-card-title>
-            <v-card-actions class="close">
+            <v-card-actions class="postit-close">
                 <v-avatar
                     @click="deleteExpense"
                     slot="icon"

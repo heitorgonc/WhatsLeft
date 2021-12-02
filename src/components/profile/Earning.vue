@@ -1,8 +1,8 @@
 <template>
-    <v-flex class="profilePostit">
+    <v-flex class="profile-postit">
         <v-card 
             class="mx-auto"
-            max-width="344"
+            max-width="400px"
             outlined
         >
             <v-list-item three-line>
@@ -11,7 +11,7 @@
                         <v-layout 
                             align-center
                             justify-center
-                            class="profilePostitTitle"
+                            class="profile-postit-title"
                         >
                             <v-avatar
                                 slot="icon"
@@ -34,24 +34,24 @@
                         align-center
                         justify-center
                     >
-                        <div class="profilePostitTextFields">
+                        <div class="profile-postit-text">
                             <div
                                 v-if="profileEarning.description"
-                                class="profilePostitText"
+                                class="profile-postit-text-item"
                             >
-                                <span class="profilePostitLabel">Description :</span> {{profileEarning.description}}
+                                <span class="profile-postit-label">Description :</span> {{profileEarning.description}}
                             </div> 
                             <div
                                 v-if="profileEarning.value"
-                                class="profilePostitText"
+                                class="profile-postit-text-item"
                             >
-                                <span class="profilePostitLabel">Value :</span> {{profileEarning.value | dollarsign}}
+                                <span class="profile-postit-label">Value :</span> {{profileEarning.value | dollarsign}}
                             </div>
                             <div 
                                 v-if="profileEarning.quantity"
-                                class="profilePostitText"
+                                class="profile-postit-text-item"
                             >
-                                <span class="profilePostitLabel">Quantity :</span>{{profileEarning.quantity}}<small>x</small>
+                                <span class="profile-postit-label">Quantity :</span>{{profileEarning.quantity}}<small>x</small>
                             </div>
                         </div>
                     </v-layout>

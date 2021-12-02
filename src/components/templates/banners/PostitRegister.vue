@@ -1,18 +1,6 @@
 <template>
-    <v-container fluid class="banner">
+    <v-container fluid class="postit-register-banner">
         <v-banner dark>
-            <v-avatar
-                slot="icon"
-                class="bannerAvatar"
-                size="40"
-            >
-                <v-icon 
-                    icon="mdi-folder-plus-outline"
-                    color="white"
-                >mdi-folder-plus-outline
-                </v-icon>
-            </v-avatar>
-            <span class="bannerText">Do you want to create a new post-it ?</span>
             <template v-slot:actions>
                 <v-dialog
                     v-model="dialog"
@@ -20,14 +8,33 @@
                     max-width="600px"
                 >
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn 
-                            color="grey lighten-1"
-                            class="mr-5"
-                            text
+                        <v-layout align-center class="postit-register-layout">
+                            <div class="avatar">
+                                <v-avatar
+                                    slot="icon"
+                                    class="postit-register-avatar"
+                                    size="40"
+                                >
+                                    <v-icon 
+                                        icon="mdi-folder-plus-outline"
+                                        color="white"
+                                    >mdi-folder-plus-outline
+                                    </v-icon>
+                                </v-avatar>
+                            </div>
+                            <span class="postit-register-span2">Do you want to create a new post-it ?</span>
+                        </v-layout>
+                        <v-card
+                            class="postit-register-card"
+                            elevation-1
+                            color="rgba(0, 0, 0, 0.459)"
                             v-bind="attrs"
                             v-on="on"
-                        >New Post-it
-                        </v-btn>
+                        > 
+                            <v-layout justify-center align-center>
+                                <span class="postit-register-card-text">click here</span>
+                            </v-layout>
+                        </v-card>
                     </template>
                     <slot name="register"></slot>
                 </v-dialog>

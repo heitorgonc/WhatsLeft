@@ -24,6 +24,16 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   routes: [
+    { 
+      path: '/:catchAll(.*)', 
+      components: {
+        default: HomePage,
+        appbar: HomeBar,
+        drawer: HomeDrawer,
+        footer: HomeFooter
+      },
+      name: 'NotFound'
+    },
     {
       path: '/', 
       components: {

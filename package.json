@@ -7,7 +7,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "dev": "webpack-dev-server",
-    "production": "'process.env.NODE_ENV': JSON.stringify('production')",
+    "production": "NODE_ENV=production webpack --progress -p",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },

@@ -129,7 +129,9 @@ export default {
             this.$refs.form.resetValidation()
         },
         deleteEarning(){
-            this.$http.delete(`/earnings/${this.id}.json`)
+            this.$http.delete(`/earnings/${this.id}.json`).then(
+                
+            )
         },
         
     },

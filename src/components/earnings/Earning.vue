@@ -19,6 +19,7 @@
                 </v-layout>
             </v-card-title>
             <v-card-actions class="postit-close">
+                
                 <v-avatar
                     @click="deleteEarning"
                     slot="icon"
@@ -32,6 +33,7 @@
                     >mdi-close
                     </v-icon>
                 </v-avatar>
+                
             </v-card-actions>
         </v-card>
         <v-card>
@@ -127,11 +129,7 @@ export default {
             this.$refs.form.resetValidation()
         },
         deleteEarning(){
-            this.$http.delete(`/earnings/${this.id}.json`).then(
-                () => {
-                    this.$store.commit('reloadPage')
-                }
-            )
+            this.$http.delete(`/earnings/${this.id}.json`)
         },
         
     },

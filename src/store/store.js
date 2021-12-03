@@ -18,6 +18,9 @@ export default new Vuex.Store({
         },
         setGroup(state, group){
             state.group = group 
+        },
+        reloadPage(){
+            window.location.reload()
         }
     },
     getters:{

@@ -130,10 +130,14 @@ export default {
         },
         deleteEarning(){
             this.$http.delete(`/earnings/${this.id}.json`).then(
-                
+                () =>{
+                    this.reloadPage()
+                }
             )
         },
-        
+        reloadPage(){
+            this.$store.commit('reloadPage')
+        }
     },
     computed:{
         funds(){

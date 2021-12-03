@@ -26,12 +26,7 @@ const router = new Router({
   routes: [
     { 
       path: '/:catchAll(.*)', 
-      components: {
-        default: HomePage,
-        appbar: HomeBar,
-        drawer: HomeDrawer,
-        footer: HomeFooter
-      },
+      component: NotFoundComponent,
       name: 'NotFound'
     },
     {

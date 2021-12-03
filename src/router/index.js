@@ -34,7 +34,7 @@ const router = new Router({
       }
     },
     {
-      path: 'https://whtsleft.netlify.app/earnings', 
+      path: '/earnings', 
       components: {
         default: EarningsHome,
         way: WayEarnings,

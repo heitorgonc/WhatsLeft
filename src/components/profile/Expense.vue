@@ -2,7 +2,7 @@
     <v-flex class="profile-postit">
         <v-card 
             class="mx-auto"
-            max-width="400"
+            max-width="400px"
             outlined
         >
             <v-list-item three-line>

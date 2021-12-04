@@ -1,7 +1,7 @@
 /* GLOBAL */
     .helpAvatar{
-        background: rgb(9,77,143);
-        background: linear-gradient(180deg, rgba(9,77,143,1) 0%, rgba(58,118,185,1) 35%, rgba(18,75,177,1) 100%);
+        background: rgb(126,119,6);
+        background: linear-gradient(90deg, rgba(126,119,6,1) 0%, rgba(221,212,33,1) 46%, rgba(217,227,45,1) 100%);
     }
     .helpLi{
         color: rgb(153, 153, 153);
@@ -25,19 +25,6 @@
     /* Profile.vue */
         .profile-opening-layout{
             background-color: #fff;
-        }
-        .profile-span{
-            font-family: 'Rubik';
-            text-transform: uppercase;
-            color: #ccc;
-            font-weight: 400;
-            font-size: 3rem;
-        }
-        .funds{
-            color: #1d7e66;
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            background-color: rgb(0, 0, 0, 0.44);
         }
     /* OpeningBalance.vue */
         .opening-balance-span{
@@ -76,8 +63,18 @@
         }
     /* ProfileSparkline.vue */
         .profile-sparkline-card{
-            background: rgb(153,238,244);
-            background: linear-gradient(90deg, rgba(153,238,244,0.49343487394957986) 0%, rgba(20,168,156,0.49) 46%, rgba(0,121,93,0.49) 100%);
+            background: rgb(26,94,181);
+            background: linear-gradient(90deg, rgba(26,94,181,0.5) 0%, rgba(19,153,233,0.5) 46%, rgba(37,127,214,0.5) 100%);
+        }
+        .profile-sparkline-card-title{
+            margin: 20px;
+        }
+        .sparkline-span{
+            font-family: 'Rubik';
+            text-transform: uppercase;
+            color: rgb(233, 233, 233);
+            font-weight: 400;
+            font-size: 2.5rem;
         }
 
 
@@ -131,12 +128,23 @@
             text-decoration: none;
             color: #000 !important;
         }
+        .text-logo{
+            font-family: 'Rubik';
+            font-weight: 500;
+            color: rgb(138, 138, 138);
+        }
+        .text-logo1{
+            font-family: 'Rubik';
+            font-weight: 400;
+            color: #117c09;
+        }
     /* WayProfile.vue */
         .way-link{
             text-decoration: none;
             color: #000 !important;
             text-transform: uppercase;
-            font-weight: 400;
+            font-weight: 500;
+            font-size: 1rem;
         }
         .way-active{
             color: #0278ff !important;
@@ -211,15 +219,30 @@
         .postit-register-span2{
             font-size: medium;
         }
+        .profile-sparkline-card{
+            width: 80vw;
+        }
+        .sparkline-span{
+            font-size: 1.5rem;
+        }
     }
     @media only screen and (max-width: 425px){
         .sparkline{
             width: 380px;
         }
-        .profile-span{
-            font-size: 1.5rem;
+        .sparkline-span{
+            font-size: large;
         }
-        .textLogo{
+        .profile-sparkline-card{
+            width: 80vw;
+        }
+        .profile-sparkline-card-title{
+            margin: 10px;
+        }
+        .text-logo{
+            font-size: small;
+        }
+        .text-logo1{
             font-size: small;
         }
         .app-funds{
@@ -252,6 +275,9 @@
         .postit-value{
             font-size: medium;
         }
+        .app-funds{
+            display: none;
+        }
     }
     @media only screen and (max-width: 375px){
         .app-funds{
@@ -272,6 +298,18 @@
         .postit-value{
             font-size: medium;
         }
+        .profile-span{
+            font-size: medium;
+        }
+        .app-funds{
+            display: none;
+        }
+        .text-logo{
+            font-size: 10px;
+        }
+        .text-logo1{
+            font-size: 10px;
+        }
     }
     @media only screen and (max-width: 320px){
         .app-funds{
@@ -284,6 +322,15 @@
             font-size: medium;
         }
         .postit-value{
+            font-size: medium;
+        }
+        .text-logo{
+            font-size: 8px;
+        }
+        .text-logo1{
+            font-size: 8px;
+        }
+        .sparkline-span{
             font-size: medium;
         }
     }

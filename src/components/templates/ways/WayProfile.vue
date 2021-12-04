@@ -2,6 +2,7 @@
     <v-banner
         single-line
         align-center
+        class="pa-3"
     >
         <router-link 
             class="way-link"

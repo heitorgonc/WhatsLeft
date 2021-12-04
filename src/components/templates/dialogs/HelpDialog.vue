@@ -5,7 +5,7 @@
     >
         <template v-slot:activator="{on, attrs}">
             <v-avatar
-                size="30"
+                size="40"
                 color="black"
                 v-bind="attrs"
                 v-on="on"
@@ -14,8 +14,8 @@
             >
                 <v-icon 
                     icon="mdi-help"
-                    color="white"
-                    size="medium"
+                    color="black"
+                    size="x-large"
                 >
                     mdi-help
                 </v-icon>

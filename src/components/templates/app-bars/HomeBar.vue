@@ -11,10 +11,11 @@
                 <v-card
                     color="transparent"
                     flat
+                    
                 >
                     <router-link to="/" class="app-bar-link">
                         <span class="text-logo">What's</span>
-                        <span class="font-weight-light text-logo1">left</span>
+                        <span class="text-logo1">left</span>
                     </router-link>
                 </v-card>
             </v-toolbar-title>

@@ -30,23 +30,14 @@
                     color="rgba(0, 0, 0, 0.47)"
                     v-else
                 >
-                    <v-container fluid>
-                        <router-view name="help"></router-view>
-                    </v-container>
-                    <v-layout 
-                        align-center
-                        justify-center
-                    >
-                        <span class="profile-span pr-5">
-                            Remaining :
-                        </span>
-                        <span 
-                            class="profile-span funds pr-3 pl-3" 
-                            elevation
-                        >{{funds | dollarsign}}
-                        </span>
-                    </v-layout>
-                    <ProfileSparkline class="mt-10"></ProfileSparkline>
+                    <v-card color="transparent">
+                        <v-container fluid>
+                            <v-layout justify-end>
+                                <router-view name="help"></router-view>
+                            </v-layout>
+                        </v-container>
+                        <ProfileSparkline class="mt-10"></ProfileSparkline>
+                    </v-card>
                     <v-layout class="pa-2" column>
                         <ProfileList></ProfileList>
                     </v-layout>

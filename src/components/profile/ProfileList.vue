@@ -1,44 +1,19 @@
 <template>
-    <v-layout
-        class="pa-8"
-        column
-        align-center
-        justify-center
-    >
+    <v-layout class="pa-8" column align-center justify-center>
         <template>
-            <v-carousel v-model="modelearnings" rounded>
-                <v-carousel-item
-                    v-for="(profileEarning, id) in profileEarnings"
-                    :key="id"
-                >
-                    <v-row
-                        class="fill-height"
-                        align="center"
-                        justify="center"
-                    >
-                        <Earning
-                            :profileEarning="profileEarning"
-                            :id="id"
-                        ></Earning>
+            <v-carousel v-model="modelearnings" rounded hide-delimiter-background :show-arrows="false">
+                <v-carousel-item v-for="(profileEarning, id) in profileEarnings" :key="id">
+                    <v-row class="fill-height" align="center" justify="center">
+                        <Earning :profileEarning="profileEarning" :id="id"></Earning>
                     </v-row>
                 </v-carousel-item>
             </v-carousel>
         </template>
         <template>
-            <v-carousel v-model="modelexpenses">
-                <v-carousel-item
-                    v-for="(profileExpense, id) in profileExpenses"
-                    :key="id"
-                >
-                    <v-row
-                        class="fill-height"
-                        align="center"
-                        justify="center"
-                    >
-                        <Expense
-                            :profileExpense="profileExpense"
-                            :id="id"
-                        ></Expense>
+            <v-carousel v-model="modelexpenses" hide-delimiter-background :show-arrows="false">
+                <v-carousel-item v-for="(profileExpense, id) in profileExpenses" :key="id">
+                    <v-row class="fill-height" align="center" justify="center">
+                        <Expense :profileExpense="profileExpense" :id="id"></Expense>
                     </v-row>
                 </v-carousel-item>
             </v-carousel>
@@ -74,14 +49,10 @@ export default {
     },
     computed:{
         profileEarnings(){
-            
-                return this.$store.getters.profileEarnings
-        
+            return this.$store.getters.profileEarnings
         },
-        profileExpenses:{
-            get(){
-                return this.$store.getters.profileExpenses
-            }
+        profileExpenses(){
+            return this.$store.getters.profileExpenses
         },
         funds(){
             return this.$store.getters.funds
@@ -97,7 +68,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

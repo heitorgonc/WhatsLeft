@@ -1,7 +1,7 @@
 <template>
     <v-layout class="pa-8" column align-center justify-center>
         <template>
-            <v-carousel v-model="modelexpenses" rounded>
+            <v-carousel v-model="modelexpenses" rounded hide-delimiter-background :show-arrows="false">
                 <v-carousel-item v-for="(expense, id) in expenses" :key="id">
                     <v-row class="fill-height" align="center" justify="center">
                         <Expense :expense="expense" :id="id"></Expense>

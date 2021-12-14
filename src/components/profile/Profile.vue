@@ -1,35 +1,14 @@
 <template>
     <v-layout column>
-        <v-dialog
-            v-model="dialog"
-            persistent
-        >
+        <v-dialog v-model="dialog" persistent>
             <OpeningBalance></OpeningBalance>
             <template v-slot:activator="{ on, attrs }">
-                <v-sheet 
-                    color="rgba(0, 0, 0, 0.47)"
-                    v-if="noFunds"
-                >
-                    <v-layout
-                        align-center
-                        justify-center
-                        class="profileopening-background"
-                    >
-                        <v-btn
-                            class="mt-5 mb-5"
-                            text
-                            color="success"
-                            dark
-                            v-bind="attrs"
-                            v-on="on"
-                        >Opening Balance
-                        </v-btn>
+                <v-sheet color="rgba(0, 0, 0, 0.47)" v-if="noFunds">
+                    <v-layout align-center justify-center class="profileopening-background">
+                        <v-btn class="mt-5 mb-5" text color="success" dark v-bind="attrs" v-on="on">Opening Balance</v-btn>
                     </v-layout>
                 </v-sheet>
-                <v-sheet 
-                    color="rgba(0, 0, 0, 0.47)"
-                    v-else
-                >
+                <v-sheet color="rgba(0, 0, 0, 0.47)" v-else>
                     <ProfileHome></ProfileHome>
                 </v-sheet>
             </template>

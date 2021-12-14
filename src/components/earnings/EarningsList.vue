@@ -1,7 +1,7 @@
 <template>
     <v-layout class="pa-8" column align-center justify-center>
         <template>
-            <v-carousel v-model="modelearnings" rounded>
+            <v-carousel v-model="modelearnings" rounded hide-delimiter-background :show-arrows="false">
                 <v-carousel-item v-for="(earning, id) in earnings" :key="id">
                     <v-row class="fill-height" align="center" justify="center">
                         <Earning :earning="earning" :id="id"></Earning>
@@ -18,7 +18,8 @@ import Earning from './Earning.vue'
 export default {
     data(){
         return{
-            modelearnings: 0
+            modelearnings: 0,
+            array: this.$store.getters.earnings
         }
     },
     components:{

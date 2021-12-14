@@ -1,40 +1,16 @@
 <template>
-    <v-card
-        dark
-    >
-        <v-layout
-            column
-            align-center
-            justify-center
-        >
+    <v-card dark>
+        <v-layout column align-center justify-center>
             <v-card-title>
                 <span class="opening-balance-span pr-5">Opening Balance:</span>
             </v-card-title>
             <v-card-text>
                 <v-form ref="form">
-                    <v-text-field
-                        type="number"
-                        :counter="10"
-                        :rules="fundsRules"
-                        required
-                        dark
-                        v-model="funds"
-                    >
-                    </v-text-field>
+                    <v-text-field type="number" :counter="10" :rules="fundsRules" required dark v-model="funds"></v-text-field>
                 </v-form>
             </v-card-text>
             <v-card-actions>
-                <v-btn
-                    color="success"
-                    text
-                    :disabled="
-                        noFunds ||
-                        negativeFunds ||
-                        fundsMustLess
-                    "
-                    @click="saveFunds"
-                >Save
-                </v-btn>
+                <v-btn color="success" text :disabled="noFunds || negativeFunds || fundsMustLess" @click="saveFunds">Save</v-btn>
             </v-card-actions>
         </v-layout>
     </v-card>
@@ -90,7 +66,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

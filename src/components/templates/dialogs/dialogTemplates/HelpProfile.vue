@@ -10,14 +10,14 @@
                 </v-layout>
             </v-card-title>
             <v-card-text>
-                <ul class="helpUl">
-                    <li class="helpLi pb-4">
+                <ul class="help-ul">
+                    <li class="help-li pb-4">
                         In profile we have all the records of the confirmed post-its
                     </li>
-                    <li class="helpLi pb-4">
+                    <li class="help-li pb-4">
                         Deleting the post-it record undoes your changes
                     </li>
-                    <li class="helpLi">
+                    <li class="help-li">
                         The graph shows the user's remaining balance records
                     </li>
                 </ul>
@@ -28,13 +28,3 @@
         </v-card>
     </div>
 </template>
-
-<script>
-export default {
-    
-}
-</script>
-
-<style>
-    
-</style>

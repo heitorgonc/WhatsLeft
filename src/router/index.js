@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-const HomePage = () => import('../components/Home')
+const HomePage = () => import('../components/home/Home')
 const EarningsHome = () => import('../components/earnings/EarningsHome')
 const EarningsList = () => import('../components/earnings/EarningsList')
 const EarningsRegister = () => import('../components/earnings/EarningsRegister')
@@ -17,7 +17,7 @@ const HomeDrawer = () => import('../components/templates/drawers/HomeDrawer')
 const HomeFooter = () => import('../components/templates/footers/HomeFooter')
 const HelpDialog = () => import('../components/templates/dialogs/HelpDialog')
 const HelpPostit = () => import('../components/templates/dialogs/dialogTemplates/HelpPostit')
-const HelpProfile = () => import('../components/templates/dialogs/dialogTemplates/HelpProfile')
+const HelpProfile = () =>import('../components/templates/dialogs/dialogTemplates/HelpProfile')
 
 Vue.use(Router)
 
@@ -91,15 +91,13 @@ const router = new Router({
         default: Profile,
         way: WayProfile,
         appbar: HomeBar,
-        drawer: HomeDrawer
+        drawer: HomeDrawer,
       },
       children:[
         {
-          path:'',
-          components:{
-            help: HelpDialog,
-          },
-          children: [
+          path: '',
+          component: HelpDialog,
+          children:[
             {
               path: '',
               component: HelpProfile

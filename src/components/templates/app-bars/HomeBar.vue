@@ -11,20 +11,27 @@
                 <v-card
                     color="transparent"
                     flat
-                    
                 >
-                    <router-link to="/" class="app-bar-link">
-                        <span class="text-logo">What's</span>
-                        <span class="text-logo1">left</span>
+                    <router-link 
+                        to="/" 
+                        class="homebar-link"
+                    >
+                        <span class="homebar-logo-text">What's</span>
+                        <span class="homebar-logo-text1">left</span>
                     </router-link>
                 </v-card>
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-layout><slot name="way"></slot></v-layout>
             <v-spacer></v-spacer>
-            <v-layout align-center class="app-funds">
+            <v-layout align-center class="homebar-funds-label">
                 <span class="text-uppercase grey--text text--darken-2">
-                    Remaining: <span class="homebar-funds">{{funds | dollarsign}}</span>
+                    <span class="homebar-funds-text">
+                        Remaining:
+                    </span>
+                    <span class="homebar-funds-text1">
+                        {{funds | dollarsign}}
+                    </span>
                 </span>
             </v-layout>
             <v-spacer></v-spacer>
@@ -59,7 +66,3 @@ export default {
     }
 }
 </script>
-
-<style>
-    
-</style>

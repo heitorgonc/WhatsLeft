@@ -2,7 +2,6 @@
     <v-navigation-drawer
         app
         temporary
-        class="drawer"
         v-model="drawer"
     >
         <v-list
@@ -62,7 +61,3 @@ export default {
     }
 }
 </script>
-
-<style>
-    
-</style>

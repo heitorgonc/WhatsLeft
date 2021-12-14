@@ -6,7 +6,7 @@
         justify-center
     >
         <template>
-            <v-carousel v-model="modelearnings" rounded >
+            <v-carousel v-model="modelearnings" rounded>
                 <v-carousel-item
                     v-for="(profileEarning, id) in profileEarnings"
                     :key="id"
@@ -73,10 +73,10 @@ export default {
         }
     },
     computed:{
-        profileEarnings:{
-            get(){
+        profileEarnings(){
+            
                 return this.$store.getters.profileEarnings
-            }
+        
         },
         profileExpenses:{
             get(){

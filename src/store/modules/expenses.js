@@ -3,14 +3,10 @@ import Vue from 'vue'
 export default {
     state: {
         expenses: [],
-        expensesDialog: false
     },
     mutations:{
         setExpenses(state, expenses){
             state.expenses = expenses
-        },
-        setExpensesDialog(state, dialog){
-            state.expensesDialog = dialog
         }
     },
     actions:{
@@ -29,9 +25,6 @@ export default {
     getters:{
         expenses(state){
             return state.expenses
-        },
-        expensesDialog(state){
-            return state.expensesDialog
         }
     }
 }

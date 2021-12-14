@@ -1,32 +1,16 @@
 <template>
-    <v-layout
-        justify-center
-        align-center
-    >
+    <v-layout justify-center align-center>
         <v-flex>
-            <v-card class="blue darken-3" width="400">
+            <v-card class="blue darken-3" min-width="300">
                 <v-card-title>
-                    <v-layout 
-                        align-center 
-                        justify-center
-                    >
-                        <span class="postit-register-span">New</span>
-                        <span class="postit-register-span1">Post-it</span>
+                    <v-layout align-center justify-center>
+                        <span class="postitregister-title-text">New</span>
+                        <span class="postitregister-title-text1">Post-it</span>
                     </v-layout>
                 </v-card-title>
                 <v-card-actions class="postit-close">
-                    <v-avatar
-                        slot="icon"
-                        color="black"
-                        size="20"
-                        @click="clear"
-                    >
-                        <v-icon 
-                            size="medium"
-                            icon="mdi-close"
-                            color="white"
-                        >mdi-close
-                        </v-icon>
+                    <v-avatar slot="icon" color="black" size="20" @click="clear">
+                        <v-icon size="medium" icon="mdi-close" color="white">mdi-close</v-icon>
                     </v-avatar>
                 </v-card-actions>
             </v-card>
@@ -35,62 +19,24 @@
                     <v-container>
                         <v-form ref="form">
                             <v-col cols="12">
-                                <v-text-field
-                                    type="text"
-                                    v-model="description"
-                                    :rules="descriptionRules"
-                                    :counter="15"
-                                    label="Description"
-                                    required
-                                >
-                                </v-text-field>
+                                <v-text-field type="text" v-model="description" :rules="descriptionRules"
+                                :counter="15" label="Description" required></v-text-field>
                             </v-col>
                             <v-col cols="12">
-                                <v-text-field 
-                                    class="pb-3"
-                                    type="number" 
-                                    v-model="value"
-                                    :counter="10"
-                                    :rules="valueRules"
-                                    label="Value"
-                                    required
-                                >
-                                </v-text-field>
+                                <v-text-field class="pb-3" type="number" v-model="value" :counter="10"
+                                :rules="valueRules" label="Value" required></v-text-field>
                             </v-col>
                         </v-form>
                     </v-container>
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-actions>
-                    <v-layout
-                        align-center
-                        justify-center
-                    >
-                        <v-btn
-                            class="ml-3 mt-3"
-                            color="error"
-                            text
-                            @click="clear"
-                            :disabled="
-                                noDescription ||
-                                noValue
-                            "
-                        >Cancel
-                        </v-btn>
+                    <v-layout align-center justify-center>
+                        <v-btn class="ml-3 mt-3" color="error" text @click="clear"
+                        :disabled=" noDescription || noValue ">Cancel</v-btn>
                         <v-spacer></v-spacer>
-                        <v-btn
-                            class="ml-3 mt-3"
-                            color="primary"
-                            text
-                            @click="addEarning"
-                            :disabled="
-                                value <= 0 ||
-                                description == '' ||
-                                valueMustLess ||
-                                descriptionMustLess
-                            "
-                        >Create
-                        </v-btn>
+                        <v-btn class="ml-3 mt-3" color="primary" text @click="addEarning"
+                        :disabled=" value <= 0 || description == '' || valueMustLess || descriptionMustLess ">Create</v-btn>
                     </v-layout>
                 </v-card-actions>
             </v-card>
@@ -99,7 +45,6 @@
 </template>
 
 <script>
-
 export default {
     data(){
         return{
@@ -163,7 +108,3 @@ export default {
     },
 }
 </script>
-
-<style>
-    
-</style>

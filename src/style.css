@@ -1,14 +1,14 @@
 /* GLOBAL */
     .helpAvatar{
-        background: rgb(126,119,6);
-        background: linear-gradient(90deg, rgba(126,119,6,1) 0%, rgba(221,212,33,1) 46%, rgba(217,227,45,1) 100%);
+        background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(237,237,235,1) 46%, rgba(195,195,195,1) 100%);
     }
-    .helpLi{
+    .help-li{
         color: rgb(153, 153, 153);
         font-family: 'Rubik';
         font-size: 1.2rem;
     }
-    .helpUl{
+    .help-ul{
         text-decoration: none;
     }
     .link{
@@ -21,9 +21,122 @@
     }
 
 
+/* APP */
+    .app-background{
+        background: rgb(45,45,79);
+        background: linear-gradient(90deg, rgba(45,45,79,1) 0%, rgba(25,141,210,1) 35%, rgba(18,117,68,1) 100%);
+    }
+
+
+/* HOME-BAR */
+    /* HomeBar.vue*/
+        .homebar-logo{
+            color: #fff;
+        }
+        .homebar-logo-text{
+            font-family: 'Rubik';
+            font-weight: 500;
+            color: rgb(138, 138, 138);
+        }
+        .homebar-logo-text1{
+            font-family: 'Rubik';
+            font-weight: 400;
+            color: #117c09;
+        }
+        .homebar-funds-text1{
+            color: #117c09;
+            font-size: 1.5;
+            font-weight: 600;
+        }
+        .homebar-link{
+            text-decoration: none;
+            color: #000 !important;
+        }
+    /* Way */
+        .way-link{
+            text-decoration: none;
+            color: #000 !important;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        .way-active{
+            color: #0278ff !important;
+        }
+        .way-divider{
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+
+
+/* POST-IT REGISTER BANNER */
+    /*PostitRegister.vue*/
+        .bannerregister{
+            background-color: rgba(0, 0, 0, .24)
+        }
+        .bannerregister-text{
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: rgb(221, 221, 221);
+            font-family: 'Rubik';
+            margin-left: 20px;
+        }
+        .bannerregister-avatar-background{
+            background: rgb(25,143,9);
+            background: linear-gradient(180deg, rgba(25,143,9,1) 0%, rgba(58,185,75,1) 35%, rgba(18,177,138,1) 100%);
+        }
+        .bannerregister-btn{
+            padding: 7px;
+            margin-left: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        .bannerregister-btn-text{
+            color: rgb(199, 199, 199);
+            text-transform: uppercase;
+            font-size: medium;
+            font-weight: 400;
+        }
+        .bannerregister-btn-text:hover{
+            color: rgb(255, 255, 255);
+        }
+
+
+/* EARNINGS AND EXPENSES PAGE */
+    /* GLOBAL */
+        .postit-close{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            justify-content: center;
+            cursor: pointer;
+        }
+    /* EarningsRegister.vue && ExpensesRegister.vue */
+        .postitregister-title-text{
+            font-size: 2rem;
+            color: #fff;
+            font-weight: 400;
+            margin-right: 5px;
+        }
+        .postitregister-title-text1{
+            font-size: 2rem;
+            color: rgb(224, 224, 224);
+            font-weight: 300;
+        }
+    /* Earning.vue && Expense.vue */
+        .postit-title-description{
+            font-size: 1.5rem;
+            font-weight: 400;
+            padding-right: 10px;
+        }
+        .postit-title-value{
+            font-size: 1.1rem;
+        }
+
+
 /* PROFILE PAGE */
     /* Profile.vue */
-        .profile-opening-layout{
+        .profileopening-background{
             background-color: #fff;
         }
     /* OpeningBalance.vue */
@@ -77,120 +190,6 @@
             font-size: 2.5rem;
         }
 
-
-/* EARNINGS AND EXPENSES PAGE */
-    .postit-close{
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        justify-content: center;
-        cursor: pointer;
-    }
-    /* EarningsRegister.vue && ExpensesRegister.vue */
-        .postit-register-span{
-            font-size: 2rem;
-            color: #fff;
-            font-weight: 400;
-            margin-right: 5px;
-        }
-        .postit-register-span1{
-            font-size: 2rem;
-            color: rgb(224, 224, 224);
-            font-weight: 300;
-        }
-    /* Earning.vue && Expense.vue */
-        .postit-description{
-            font-size: 1.5rem;
-            font-weight: 400;
-            padding-right: 10px;
-        }
-        .postit-value{
-            font-size: 1.1rem;
-        }
-    
-
-
-/* HOME-BAR APP BAR */
-    /* HomeBar.vue*/
-        .homebar-logo{
-            color: #fff;
-        }
-        .homebar-funds{
-            color: #117c09;
-            font-size: 1.5;
-            font-weight: 600;
-        }
-        .btn-logo{
-            display: none;
-            text-decoration: none;
-        }
-        .app-bar-link{
-            text-decoration: none;
-            color: #000 !important;
-        }
-        .text-logo{
-            font-family: 'Rubik';
-            font-weight: 500;
-            color: rgb(138, 138, 138);
-        }
-        .text-logo1{
-            font-family: 'Rubik';
-            font-weight: 400;
-            color: #117c09;
-        }
-    /* WayProfile.vue */
-        .way-link{
-            text-decoration: none;
-            color: #000 !important;
-            text-transform: uppercase;
-            font-weight: 500;
-            font-size: 1rem;
-        }
-        .way-active{
-            color: #0278ff !important;
-        }
-        .way-divider{
-            margin-left: 3px;
-            margin-right: 3px;
-        }
-
-
-/* POST-IT REGISTER BANNER */
-    /*PostitRegister.vue*/
-        .postit-register-banner{
-            background-color: rgba(0, 0, 0, .24)
-        }
-        .postit-register-span2{
-            font-size: 2rem;
-            font-weight: 400;
-            color: rgb(221, 221, 221);
-            font-family: 'Rubik';
-            margin-left: 20px;
-        }
-        .postit-register-avatar{
-            background: rgb(25,143,9);
-            background: linear-gradient(180deg, rgba(25,143,9,1) 0%, rgba(58,185,75,1) 35%, rgba(18,177,138,1) 100%);
-        }
-        .postit-register-card{
-            padding: 10px;
-            justify-content: center;
-            align-items: center;
-        }
-        .postit-register-card-text{
-            color: rgb(199, 199, 199);
-            text-transform: uppercase;
-            font-size: 1rem;
-            font-weight: 400;
-        }
-
-
-/* APP */
-    .gradientScreen{
-        background: rgb(45,45,79);
-        background: linear-gradient(90deg, rgba(45,45,79,1) 0%, rgba(25,141,210,1) 35%, rgba(18,117,68,1) 100%);
-    }
-
-
 /* ANIMATIONS */
     @keyframes slide-in{
         from { transform: translateY(-30px); opacity: 0; }
@@ -216,7 +215,10 @@
         .profilePostit{
             width: 200px;
         }
-        .postit-register-span2{
+        .bannerregister-text{
+            font-size: 1rem;
+        }
+        .bannerregister-btn{
             font-size: medium;
         }
         .profile-sparkline-card{
@@ -239,96 +241,84 @@
         .profile-sparkline-card-title{
             margin: 10px;
         }
-        .text-logo{
+        .homebar-logo-text{
+            font-size: medium;
+        }
+        .homebar-logo-text1{
+            font-size: medium;
+        }
+        .homebar-funds-label{
+            display: none;
+        }
+        .bannerregister-avatar{
+            display: none;
+        }
+        .bannerregister-btn-text{
             font-size: small;
         }
-        .text-logo1{
+        .bannerregister-text{
             font-size: small;
         }
-        .app-funds{
-            font-size: x-small;
-        }
-        .postit-register-span2{
+        .homebar-link{
             font-size: small;
-        }
-        .postit-register-card{
-            padding: 5px;
-        }
-        .postit-register-card-text{
-            font-size: x-small;
-        }
-        .app-bar-link{
-            font-size: x-small;
         }
         .way-link{
-            text-decoration: none;
-            color: #000 !important;
-            text-transform: uppercase;
             font-size: x-small;
-        }
-        .way-active{
-            color: #0278ff !important;
         }
         .postit-description{
             font-size: medium;
         }
         .postit-value{
             font-size: medium;
-        }
-        .app-funds{
-            display: none;
         }
     }
     @media only screen and (max-width: 375px){
-        .app-funds{
-            font-size: 7px;
-        }
         .way-link{
-            font-size: 7px;
+            font-size: x-small;
         }
-        .postit-register-card{
+        .bannerregister-btn{
             padding: 2px;
         }
-        .postit-register-span2{
-            font-size: 10px;
+        .bannerregister-btn-text{
+            font-size: x-small;
         }
-        .postit-description{
+        .bannerregister-text{
+            font-size: x-small;
+        }
+        .postit-title-description{
             font-size: medium;
         }
-        .postit-value{
+        .postit-title-value{
             font-size: medium;
         }
         .profile-span{
             font-size: medium;
         }
-        .app-funds{
-            display: none;
+        .homebar-logo-text{
+            font-size: small;
         }
-        .text-logo{
-            font-size: 10px;
-        }
-        .text-logo1{
-            font-size: 10px;
+        .homebar-logo-text1{
+            font-size: small;
         }
     }
     @media only screen and (max-width: 320px){
-        .app-funds{
-            display: none;
+        .homebar-logo-text{
+            font-size: x-small;
         }
-        .avatar{
-            display: none;
+        .homebar-logo-text1{
+            font-size: x-small;
         }
-        .postit-description{
+        .way-link{
+            font-size: 7px;
+        }
+        .bannerregister-btn-text{
+            font-size: 7px;
+        }
+        .postit-title-description{
             font-size: medium;
         }
-        .postit-value{
+        .postit-title-value{
             font-size: medium;
-        }
-        .text-logo{
-            font-size: 8px;
-        }
-        .text-logo1{
-            font-size: 8px;
         }
         .sparkline-span{
             font-size: medium;

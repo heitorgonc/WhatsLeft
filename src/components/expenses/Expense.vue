@@ -1,80 +1,34 @@
 <template>
-    <v-flex 
-        class="pr-5 pt-5" 
-        xs12 
-        md6 
-        lg4
-    >
-        <v-card 
-            rounded
-            class="red darken-3 white--text"
-        >
+    <v-flex class="ma-2" xs12 md6 lg4>
+        <v-card rounded class="red darken-3 white--text">
             <v-card-title>
-                <v-layout
-                    align-center
-                    justify-center
-                >
-                    <span class="postit-description">{{expense.description}}</span>
-                    <span class="postit-value">({{expense.price | dollarsign}})</span>
+                <v-layout align-center justify-center>
+                    <span class="postit-title-description">{{expense.description}}</span>
+                    <span class="postit-title-value">({{expense.price | dollarsign}})</span>
                 </v-layout>
             </v-card-title>
             <v-card-actions class="postit-close">
-                <v-avatar
-                    @click="deleteExpense"
-                    slot="icon"
-                    color="white"
-                    size="20"
-                >
-                    <v-icon 
-                        size="medium"
-                        icon="mdi-close"
-                        color="black"
-                    >mdi-close
-                    </v-icon>
+                <v-avatar @click="deleteExpense" slot="icon" color="white" size="20">
+                    <v-icon size="medium" icon="mdi-close" color="black">mdi-close</v-icon>
                 </v-avatar>
             </v-card-actions>
         </v-card>
         <v-card>
-            <v-container 
-                fill 
-                height
-            >
+            <v-container fill height>
                 <v-form ref="form">
-                    <v-text-field
-                        label="Date" 
-                        type="date" 
-                        v-model="date"
-                    >
-                    </v-text-field>
-                    <v-text-field 
-                        class="pb-3"
-                        label="Quantity" 
-                        type="number"
-                        :counter="10"
-                        :rules="quantityRules"
-                        v-model="quantity"
-                    >
-                    </v-text-field>
+                    <v-text-field label="Date" type="date" v-model="date"></v-text-field>
+                    <v-text-field class="mb-3" label="Quantity" type="number" :counter="10"
+                    :rules="quantityRules" v-model="quantity"></v-text-field>
                     <v-divider></v-divider>
-                    <v-btn 
-                        class="ml-3 mt-3"
-                        text
-                        color="success"
-                        :disabled="
-                            quantity <= 0 || 
-                            date == '' ||
-                            quantityMustLess
-                        "
-                        @click="confirmExpense"
-                    >Confirm
-                    </v-btn>
+                    <v-btn class="ml-3 mt-3" text color="success" @click="confirmExpense"
+                    :disabled=" quantity <= 0 || date == '' || quantityMustLess ">Confirm</v-btn>
                 </v-form>
             </v-container>
         </v-card>
     </v-flex>
 </template>
-<script>
 
+<script>
 export default {
     props: ['expense', 'id'],
     data() {
@@ -143,6 +97,3 @@ export default {
     }
 }
 </script>
-<style>
-    
-</style>

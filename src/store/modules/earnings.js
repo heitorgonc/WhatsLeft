@@ -3,14 +3,10 @@ import Vue from 'vue'
 export default {
     state: {
         earnings: [],
-        earningsDialog: false
     },
     mutations:{
         setEarnings(state, earnings){
             state.earnings = earnings
-        },
-        setEarningsDialog(state, dialog){
-            state.earningsDialog = dialog
         }
     },
     actions:{
@@ -29,9 +25,6 @@ export default {
     getters:{
         earnings(state){
             return state.earnings
-        },
-        earningsDialog(state){
-            return state.earningsDialog
         }
     }
 }

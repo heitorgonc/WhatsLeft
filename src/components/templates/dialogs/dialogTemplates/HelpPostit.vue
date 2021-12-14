@@ -10,14 +10,14 @@
                 </v-layout>
             </v-card-title>
             <v-card-text>
-                <ul class="helpUl">
-                    <li class="helpLi pb-4">
+                <ul class="help-ul">
+                    <li class="help-li pb-4">
                         To make the registration of accounts to be won less repetitive we have Post-its
                     </li>
-                    <li class="helpLi pb-4">
+                    <li class="help-li pb-4">
                         The post-its will register the balance change in the profile when confirmed
                     </li>
-                    <li class="helpLi">
+                    <li class="help-li">
                         Each time a post-it is confirmed, a record with its data is inserted into the profile
                     </li>
                 </ul>
@@ -28,13 +28,3 @@
         </v-card>
     </div>
 </template>
-
-<script>
-export default {
-    
-}
-</script>
-
-<style>
-    
-</style>

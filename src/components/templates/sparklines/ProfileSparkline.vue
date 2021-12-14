@@ -16,23 +16,22 @@
                 <span 
                     class="sparkline-span" 
                     elevation
-                >{{funds | dollarsign}}
+                >{{ funds| dollarsign}}
                 </span>
             </v-layout>
         </v-card-title>
         <v-divider></v-divider>
         <v-card-text>
-            <v-sheet color="rgba(0, 0, 0, .35)" rounded>
+            <v-sheet color="rgba(0, 0, 0)" rounded>
                 <v-sparkline
-                    class="profile-sparkline"
                     auto-draw
                     line-width="3"
-                    :value="value"
+                    :value="savedFunds"
                     color="white darken"
                     height="150"
                     stroke-linecap="round"
                     smooth
-                    :padding='20'
+                    :padding='30'
                 >
                     <template v-slot:label="item">
                         ${{ item.value }}
@@ -50,7 +49,6 @@
                 >Clear
                 </v-btn>
             </v-layout>
-            
         </v-card-actions>
     </v-card>
 </template>
@@ -62,17 +60,16 @@ export default {
             return this.$store.dispatch('loadSavedFunds')
         },
         clearSparkline(){
-            const funds = this.$store.getters.funds
-            this.$http.put(`savedFunds.json`, funds).then(
+            return this.$http.put(`savedFunds.json`, this.funds).then(
                 () => {
-                    this.saveFunds()
-                    this.saveFunds()
+                    this.addSavedFunds()
+                    this.addSavedFunds()
                     this.reloadPage()
                 }
             )
         },
-        saveFunds(){
-            const funds = this.$store.getters.funds
+        addSavedFunds(){
+            const funds = this.funds
             this.$http.post('savedFunds.json', funds)
         },
         reloadPage(){
@@ -80,7 +77,7 @@ export default {
         }
     },
     computed:{
-        value(){
+        savedFunds(){
             return this.$store.getters.savedFunds
         },
         funds(){
@@ -89,10 +86,6 @@ export default {
     },
     created() {
         this.loadSavedFunds()
-    },
+    }
 }
 </script>
-
-<style>
-
-</style>
